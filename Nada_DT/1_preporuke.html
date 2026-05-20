@@ -152,6 +152,56 @@
     }
 
 
+    .symptoms-filter{
+      margin-bottom:40px;
+    }
+
+    .filter-title{
+      color:#1f5d57;
+      margin-bottom:20px;
+      font-size:1.5rem;
+    }
+
+    .filter-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .filter-btn{
+      background:white;
+      border:2px solid #1f5d57;
+      color:#1f5d57;
+      padding:12px 18px;
+      border-radius:30px;
+      cursor:pointer;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .filter-btn:hover{
+      background:#1f5d57;
+      color:white;
+    }
+
+    .filter-btn.active{
+      background:#1f5d57;
+      color:white;
+    }
+
+    .tag{
+      display:inline-block;
+      margin-top:15px;
+      background:#e7f3f1;
+      color:#1f5d57;
+      padding:6px 12px;
+      border-radius:20px;
+      font-size:0.9rem;
+      font-weight:bold;
+    }
+
+
+
     footer{
       background:#1f5d57;
       color:white;
@@ -203,6 +253,46 @@
   <main class="container">
 
     <section class="intro">
+      
+      <section class="symptoms-filter">
+
+        <h2 class="filter-title">
+          Odaberite simptom
+        </h2>
+
+        <div class="filter-buttons">
+
+          <button class="filter-btn" data-symptom="Mučnina">
+            🤢 Mučnina
+          </button>
+
+          <button class="filter-btn" data-symptom="Umor">
+            😵 Umor
+          </button>
+
+          <button class="filter-btn" data-symptom="Ranice u ustima">
+            👄 Ranice u ustima
+          </button>
+
+          <button class="filter-btn" data-symptom="Proljev">
+            🚽 Proljev
+          </button>
+
+          <button class="filter-btn" data-symptom="Zatvor">
+            🚽 Zatvor
+          </button>
+
+          <button class="filter-btn" data-symptom="Gubitak apetita">
+            😶 Gubitak apetita
+          </button>
+
+          <button class="filter-btn" data-symptom="Gubitak težine">
+            ⚖️ Gubitak težine
+          </button>
+
+        </div>
+
+      </section>
       <h2 style="color:#1f5d57; margin-bottom:15px;">
         Važne preporuke
       </h2>
@@ -214,164 +304,332 @@
       </p>
     </section>
 
+       
         
     <section class="recommendations">
 
-      <!-- PREPORUKA 1 -->
-      <div class="accordion">
+      <!-- 1 -->
+
+      <div class="accordion recommendation" data-symptom="Mučnina">
 
         <button class="accordion-btn">
-          1. Jedite manje obroke češće tijekom dana
+          Jedite male obroke svaka 2-3 sata
         </button>
 
         <div class="accordion-content">
           <p>
-            Umjesto tri velika obroka preporučuje se 5–6 manjih obroka svaka 2–3 sata.
-            Tako se lakše unosi dovoljno energije i smanjuje osjećaj mučnine i težine.
+            Umjesto tri velika obroka, rasporedite dnevni unos hrane u 5-6 manjih obroka.
+            Lakše ćete unijeti dovoljno kalorija i proteina, a smanjit će se osjećaj
+            mučnine i težine.
+          </p>
+
+          <span class="tag">
+            🤢 Mučnina
+          </span>
+        </div>
+
+      </div>
+
+      <!-- 2 -->
+
+      <div class="accordion recommendation" data-symptom="Gubitak težine">
+
+        <button class="accordion-btn">
+          Dajte prednost namirnicama bogatim bjelančevinama
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Meso (piletina, puretina, teletina), riba, jaja, svježi sir,
+            jogurt i mahunarke pomažu u očuvanju mišićne mase,
+            jačanju imuniteta i oporavku tkiva.
+          </p>
+
+          <span class="tag">
+            ⚖️ Gubitak težine
+          </span>
+        </div>
+
+      </div>
+
+      <!-- 3 -->
+
+      <div class="accordion recommendation">
+
+        <button class="accordion-btn">
+          Pijte dovoljno tekućine (1,5–2 litre dnevno)
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Voda, biljni čajevi, juhe i razrijeđeni sokovi pomažu hidraciji.
+            Tekućinu pijte između obroka.
           </p>
         </div>
 
       </div>
 
-      <!-- PREPORUKA 2 -->
-      <div class="accordion">
+      <!-- 4 -->
+
+      <div class="accordion recommendation" data-symptom="Ranice u ustima">
 
         <button class="accordion-btn">
-          2. Povećajte unos bjelančevina
+          Birajte hranu koja se lako žvače i guta
         </button>
 
         <div class="accordion-content">
           <p>
-            Piletina, puretina, riba, jaja, svježi sir, jogurt i mahunarke pomažu
-            očuvanju mišićne mase i oporavku organizma.
+            Kod ranica u ustima preporučuju se kašaste i mekane namirnice:
+            pire krumpir, juhe, pudinzi, smoothieji i kuhana riža.
+          </p>
+
+          <span class="tag">
+            👄 Ranice u ustima
+          </span>
+        </div>
+
+      </div>
+
+      <!-- 5 -->
+
+      <div class="accordion recommendation">
+
+        <button class="accordion-btn">
+          Prilagodite okus i miris hrane
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Ako se pojavi metalni okus u ustima, koristite plastični pribor
+            i dodajte začinsko bilje.
           </p>
         </div>
 
       </div>
 
-      <!-- PREPORUKA 3 -->
-      <div class="accordion">
+      <!-- 6 -->
+
+      <div class="accordion recommendation" data-symptom="Mučnina">
 
         <button class="accordion-btn">
-          3. Pijte dovoljno tekućine
+          Kod mučnine izbjegavajte masnu i jako začinjenu hranu
         </button>
 
         <div class="accordion-content">
           <p>
-            Preporučuje se 1,5–2 litre tekućine dnevno:
-            voda, biljni čajevi, bistre juhe i razrijeđeni sokovi.
+            Jedite hladna ili mlaka jela i pijte tekućinu u malim gutljajima.
           </p>
+
+          <span class="tag">
+            🤢 Mučnina
+          </span>
         </div>
 
       </div>
 
-      <!-- PREPORUKA 4 -->
-      <div class="accordion">
+      <!-- 7 -->
+
+      <div class="accordion recommendation" data-symptom="Proljev">
 
         <button class="accordion-btn">
-          4. Birajte mekanu i lako probavljivu hranu
+          Kod proljeva pijte oralne rehidracijske otopine
         </button>
 
         <div class="accordion-content">
           <p>
-            Kod suhih usta ili ranica preporučuju se juhe, pire krumpir,
-            smoothieji, kašice i kuhana riža.
+            Nadoknadite vodu i elektrolite. Jedite kuhanu rižu,
+            bananu i kuhani krumpir.
           </p>
+
+          <span class="tag">
+            🚽 Proljev
+          </span>
         </div>
 
       </div>
 
-      <!-- PREPORUKA 5 -->
-      <div class="accordion">
+      <!-- 8 -->
+
+      <div class="accordion recommendation" data-symptom="Zatvor">
 
         <button class="accordion-btn">
-          5. Prilagodite okus hrane
+          Kod zatvora povećajte unos vlakana i tekućine
         </button>
 
         <div class="accordion-content">
           <p>
-            Ako se pojavi metalni okus u ustima, koristite plastični pribor,
-            začinsko bilje i blage marinade.
+            Zobene pahuljice, suhe šljive, chia sjemenke i dovoljno tekućine
+            mogu pomoći regulaciji probave.
           </p>
+
+          <span class="tag">
+            🚽 Zatvor
+          </span>
         </div>
 
       </div>
 
-      <!-- PREPORUKA 6 -->
-      <div class="accordion">
+      <!-- 9 -->
+
+      <div class="accordion recommendation" data-symptom="Gubitak težine">
 
         <button class="accordion-btn">
-          6. Kod mučnine izbjegavajte masnu i jako začinjenu hranu
+          Hranu obogatite kalorijama i proteinima
         </button>
 
         <div class="accordion-content">
           <p>
-            Hladna ili mlaka jela često se bolje podnose od toplih obroka
-            intenzivnog mirisa.
-          </p>
-        </div>
-
-      </div>
-
-      <!-- PREPORUKA 7 -->
-      <div class="accordion">
-
-        <button class="accordion-btn">
-          7. Kod proljeva nadoknadite tekućinu i elektrolite
-        </button>
-
-        <div class="accordion-content">
-          <p>
-            Preporučuju se juhe, kuhana riža, banana i kuhani krumpir,
-            dok treba izbjegavati prženu i jako vlaknastu hranu.
-          </p>
-        </div>
-
-      </div>
-
-      <!-- PREPORUKA 8 -->
-      <div class="accordion">
-
-        <button class="accordion-btn">
-          8. Kod zatvora povećajte unos vlakana
-        </button>
-
-        <div class="accordion-content">
-          <p>
-            Zobene pahuljice, chia sjemenke, kuhano povrće i dovoljno tekućine
-            mogu pomoći u regulaciji probave.
-          </p>
-        </div>
-
-      </div>
-
-      <!-- PREPORUKA 9 -->
-      <div class="accordion">
-
-        <button class="accordion-btn">
-          9. Obogatite hranu kalorijama i proteinima
-        </button>
-
-        <div class="accordion-content">
-          <p>
-            Dodajte maslinovo ulje, vrhnje, mlijeko u prahu ili naribani sir
+            Dodajte maslinovo ulje, vrhnje, sir i mlijeko u prahu
             kako biste povećali energetsku vrijednost obroka.
           </p>
+
+          <span class="tag">
+            ⚖️ Gubitak težine
+          </span>
         </div>
 
       </div>
 
-      <!-- PREPORUKA 10 -->
-      <div class="accordion">
+      <!-- 10 -->
+
+      <div class="accordion recommendation">
 
         <button class="accordion-btn">
-          10. Ne uzimajte dodatke prehrani bez savjeta liječnika
+          Ne uzimajte dodatke prehrani na svoju ruku
         </button>
 
         <div class="accordion-content">
           <p>
-            Vitamini, minerali i biljni pripravci mogu utjecati na djelovanje terapije.
-            Sve dodatke uvoditi isključivo prema preporuci stručnjaka.
+            Vitamini i biljni pripravci mogu utjecati na terapiju.
+            Koristite ih samo uz preporuku liječnika.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- 11 -->
+
+      <div class="accordion recommendation" data-symptom="Umor">
+
+        <button class="accordion-btn">
+          Planirajte obroke prema osjećaju energije
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Većina bolesnika ima bolji apetit ujutro pa tada jedite obilnije obroke.
+          </p>
+
+          <span class="tag">
+            😵 Umor
+          </span>
+        </div>
+
+      </div>
+
+      <!-- 12 -->
+
+      <div class="accordion recommendation">
+
+        <button class="accordion-btn">
+          Povremeno odstupite od “strogo zdrave” hrane
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Važno je unijeti dovoljno hrane i energije čak i kada izbor nije idealan.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- 13 -->
+
+      <div class="accordion recommendation">
+
+        <button class="accordion-btn">
+          Ne povezujte hranu s bolešću
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            U danima bez terapije uživajte u omiljenim jelima
+            kako biste zadržali pozitivan odnos prema hrani.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- 14 -->
+
+      <div class="accordion recommendation">
+
+        <button class="accordion-btn">
+          Kod suhih usta potičite lučenje sline
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Žvakaće gume bez šećera, bomboni i sladoled mogu pomoći
+            kod suhih usta.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- 15 -->
+
+      <div class="accordion recommendation" data-symptom="Mučnina">
+
+        <button class="accordion-btn">
+          Kod mučnine izbjegavajte vruću hranu i jake mirise
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Jedite hladna ili mlaka jela i izbjegavajte prostorije
+            u kojima se kuha.
+          </p>
+
+          <span class="tag">
+            🤢 Mučnina
+          </span>
+        </div>
+
+      </div>
+
+      <!-- 16 -->
+
+      <div class="accordion recommendation" data-symptom="Gubitak težine">
+
+        <button class="accordion-btn">
+          Povećajte energetsku gustoću obroka
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Dodajte sušeno voće, sjemenke i punomasne mliječne proizvode
+            kako biste povećali unos energije.
+          </p>
+
+          <span class="tag">
+            ⚖️ Gubitak težine
+          </span>
+        </div>
+
+      </div>
+
+      <!-- 17 -->
+
+      <div class="accordion recommendation">
+
+        <button class="accordion-btn">
+          Pazite na higijenu hrane
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Izbjegavajte sirovu ribu, sirova jaja i nepasterizirane proizvode.
           </p>
         </div>
 
@@ -397,6 +655,8 @@
 
 <script>
 
+  /* ACCORDION */
+
   const accordions = document.querySelectorAll(".accordion-btn");
 
   accordions.forEach(button => {
@@ -410,6 +670,62 @@
       } else {
         content.style.maxHeight = content.scrollHeight + "px";
       }
+
+    });
+
+  });
+
+  /* FILTER SIMPTOMA */
+
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const recommendations = document.querySelectorAll(".recommendation");
+
+  let activeSymptom = null;
+
+  filterButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const symptom = button.dataset.symptom;
+
+      /* PONOVNI KLIK -> RESET */
+
+      if(activeSymptom === symptom){
+
+        activeSymptom = null;
+
+        filterButtons.forEach(btn =>
+          btn.classList.remove("active")
+        );
+
+        recommendations.forEach(card => {
+          card.style.display = "block";
+        });
+
+        return;
+      }
+
+      /* NOVI FILTER */
+
+      activeSymptom = symptom;
+
+      filterButtons.forEach(btn =>
+        btn.classList.remove("active")
+      );
+
+      button.classList.add("active");
+
+      recommendations.forEach(card => {
+
+        if(card.dataset.symptom === symptom){
+          card.style.display = "block";
+        } else if(!card.dataset.symptom){
+          card.style.display = "none";
+        } else {
+          card.style.display = "none";
+        }
+
+      });
 
     });
 

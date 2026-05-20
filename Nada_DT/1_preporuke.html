@@ -112,6 +112,46 @@
       background:#164742;
     }
 
+
+
+    .accordion{
+      background:white;
+      border-radius:16px;
+      margin-bottom:20px;
+      overflow:hidden;
+      box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .accordion-btn{
+      width:100%;
+      background:#ffffff;
+      color:#1f5d57;
+      padding:24px;
+      border:none;
+      outline:none;
+      text-align:left;
+      font-size:1.1rem;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .accordion-btn:hover{
+      background:#f0f5f4;
+    }
+
+    .accordion-content{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height 0.35s ease;
+      background:#fafafa;
+    }
+
+    .accordion-content p{
+      padding:0 24px 24px;
+    }
+
+
     footer{
       background:#1f5d57;
       color:white;
@@ -174,105 +214,171 @@
       </p>
     </section>
 
+        
     <section class="recommendations">
 
-      <div class="card">
-        <h3>1. Jedite manje obroke češće tijekom dana</h3>
-        <p>
-          Umjesto tri velika obroka preporučuje se 5–6 manjih obroka svaka 2–3 sata.
-          Tako se lakše unosi dovoljno energije i smanjuje osjećaj mučnine i težine.
-        </p>
+      <!-- PREPORUKA 1 -->
+      <div class="accordion">
+
+        <button class="accordion-btn">
+          1. Jedite manje obroke češće tijekom dana
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Umjesto tri velika obroka preporučuje se 5–6 manjih obroka svaka 2–3 sata.
+            Tako se lakše unosi dovoljno energije i smanjuje osjećaj mučnine i težine.
+          </p>
+        </div>
+
       </div>
 
-      <div class="card">
-        <h3>2. Povećajte unos bjelančevina</h3>
-        <p>
-          Piletina, puretina, riba, jaja, svježi sir, jogurt i mahunarke pomažu
-          očuvanju mišićne mase i oporavku organizma.
-        </p>
+      <!-- PREPORUKA 2 -->
+      <div class="accordion">
+
+        <button class="accordion-btn">
+          2. Povećajte unos bjelančevina
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Piletina, puretina, riba, jaja, svježi sir, jogurt i mahunarke pomažu
+            očuvanju mišićne mase i oporavku organizma.
+          </p>
+        </div>
+
       </div>
 
-      <div class="card">
-        <h3>3. Pijte dovoljno tekućine</h3>
-        <p>
-          Preporučuje se 1,5–2 litre tekućine dnevno:
-          voda, biljni čajevi, bistre juhe i razrijeđeni sokovi.
-        </p>
+      <!-- PREPORUKA 3 -->
+      <div class="accordion">
+
+        <button class="accordion-btn">
+          3. Pijte dovoljno tekućine
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Preporučuje se 1,5–2 litre tekućine dnevno:
+            voda, biljni čajevi, bistre juhe i razrijeđeni sokovi.
+          </p>
+        </div>
+
       </div>
 
-      <div class="card">
-        <h3>4. Birajte mekanu i lako probavljivu hranu</h3>
-        <p>
-          Kod suhih usta ili ranica preporučuju se juhe, pire krumpir,
-          smoothieji, kašice i kuhana riža.
-        </p>
+      <!-- PREPORUKA 4 -->
+      <div class="accordion">
+
+        <button class="accordion-btn">
+          4. Birajte mekanu i lako probavljivu hranu
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Kod suhih usta ili ranica preporučuju se juhe, pire krumpir,
+            smoothieji, kašice i kuhana riža.
+          </p>
+        </div>
+
       </div>
 
-      <div class="card">
-        <h3>5. Prilagodite okus hrane</h3>
-        <p>
-          Ako se pojavi metalni okus u ustima, koristite plastični pribor,
-          začinsko bilje i blage marinade.
-        </p>
+      <!-- PREPORUKA 5 -->
+      <div class="accordion">
+
+        <button class="accordion-btn">
+          5. Prilagodite okus hrane
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Ako se pojavi metalni okus u ustima, koristite plastični pribor,
+            začinsko bilje i blage marinade.
+          </p>
+        </div>
+
       </div>
 
-      <div class="card">
-        <h3>6. Kod mučnine izbjegavajte masnu i jako začinjenu hranu</h3>
-        <p>
-          Hladna ili mlaka jela često se bolje podnose od toplih obroka
-          intenzivnog mirisa.
-        </p>
+      <!-- PREPORUKA 6 -->
+      <div class="accordion">
+
+        <button class="accordion-btn">
+          6. Kod mučnine izbjegavajte masnu i jako začinjenu hranu
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Hladna ili mlaka jela često se bolje podnose od toplih obroka
+            intenzivnog mirisa.
+          </p>
+        </div>
+
       </div>
 
-      <div class="card">
-        <h3>7. Kod proljeva nadoknadite tekućinu i elektrolite</h3>
-        <p>
-          Preporučuju se juhe, kuhana riža, banana i kuhani krumpir,
-          dok treba izbjegavati prženu i jako vlaknastu hranu.
-        </p>
+      <!-- PREPORUKA 7 -->
+      <div class="accordion">
+
+        <button class="accordion-btn">
+          7. Kod proljeva nadoknadite tekućinu i elektrolite
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Preporučuju se juhe, kuhana riža, banana i kuhani krumpir,
+            dok treba izbjegavati prženu i jako vlaknastu hranu.
+          </p>
+        </div>
+
       </div>
 
-      <div class="card">
-        <h3>8. Kod zatvora povećajte unos vlakana</h3>
-        <p>
-          Zobene pahuljice, chia sjemenke, kuhano povrće i dovoljno tekućine
-          mogu pomoći u regulaciji probave.
-        </p>
+      <!-- PREPORUKA 8 -->
+      <div class="accordion">
+
+        <button class="accordion-btn">
+          8. Kod zatvora povećajte unos vlakana
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Zobene pahuljice, chia sjemenke, kuhano povrće i dovoljno tekućine
+            mogu pomoći u regulaciji probave.
+          </p>
+        </div>
+
       </div>
 
-      <div class="card">
-        <h3>9. Obogatite hranu kalorijama i proteinima</h3>
-        <p>
-          Dodajte maslinovo ulje, vrhnje, mlijeko u prahu ili naribani sir
-          kako biste povećali energetsku vrijednost obroka.
-        </p>
+      <!-- PREPORUKA 9 -->
+      <div class="accordion">
+
+        <button class="accordion-btn">
+          9. Obogatite hranu kalorijama i proteinima
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Dodajte maslinovo ulje, vrhnje, mlijeko u prahu ili naribani sir
+            kako biste povećali energetsku vrijednost obroka.
+          </p>
+        </div>
+
       </div>
 
-      <div class="card">
-        <h3>10. Ne uzimajte dodatke prehrani bez savjeta liječnika</h3>
-        <p>
-          Vitamini, minerali i biljni pripravci mogu utjecati na djelovanje terapije.
-          Sve dodatke uvoditi isključivo prema preporuci stručnjaka.
-        </p>
-      </div>
+      <!-- PREPORUKA 10 -->
+      <div class="accordion">
 
-      <div class="card">
-        <h3>11. Jedite kada imate najviše energije</h3>
-        <p>
-          Većina bolesnika ima bolji apetit ujutro pa je preporučljivo
-          doručak učiniti obilnijim.
-        </p>
-      </div>
+        <button class="accordion-btn">
+          10. Ne uzimajte dodatke prehrani bez savjeta liječnika
+        </button>
 
-      <div class="card">
-        <h3>12. Pazite na higijenu hrane</h3>
-        <p>
-          Izbjegavajte sirovo meso, sirovu ribu, sirova jaja i nepasterizirane proizvode
-          zbog povećanog rizika od infekcija.
-        </p>
+        <div class="accordion-content">
+          <p>
+            Vitamini, minerali i biljni pripravci mogu utjecati na djelovanje terapije.
+            Sve dodatke uvoditi isključivo prema preporuci stručnjaka.
+          </p>
+        </div>
+
       </div>
 
     </section>
+
 
     <a href="../index.html" class="back-btn">
       ← Povratak na naslovnicu
@@ -286,6 +392,31 @@
       © 2026 Prehrana tijekom kemoterapije
     </p>
   </footer>
+
+
+
+<script>
+
+  const accordions = document.querySelectorAll(".accordion-btn");
+
+  accordions.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const content = button.nextElementSibling;
+
+      if(content.style.maxHeight){
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+
+    });
+
+  });
+
+</script>
+
 
 </body>
 </html>

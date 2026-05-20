@@ -1,0 +1,459 @@
+```html id="9sf3kp"
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Preporučene namirnice</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background:#f5f6f7;
+      color:#333;
+      line-height:1.7;
+    }
+
+    header{
+      background:#1f5d57;
+      color:white;
+      padding:30px 20px;
+      text-align:center;
+    }
+
+    header h1{
+      font-size:2.2rem;
+      margin-bottom:10px;
+    }
+
+    header p{
+      max-width:900px;
+      margin:auto;
+      opacity:0.95;
+    }
+
+    .hero{
+      background:
+      linear-gradient(rgba(31,93,87,0.78), rgba(31,93,87,0.78)),
+      url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1400&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      color:white;
+      text-align:center;
+      padding:90px 20px;
+    }
+
+    .hero h2{
+      font-size:2.5rem;
+      margin-bottom:15px;
+    }
+
+    .container{
+      max-width:1200px;
+      margin:50px auto;
+      padding:0 20px;
+    }
+
+    .intro{
+      background:white;
+      padding:30px;
+      border-radius:16px;
+      margin-bottom:40px;
+      box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:white;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .card-header{
+      padding:20px;
+      color:white;
+      font-size:1.3rem;
+      font-weight:bold;
+      text-align:center;
+    }
+
+    .good{
+      background:#2f8f63;
+    }
+
+    .bad{
+      background:#b94141;
+    }
+
+    .card-content{
+      padding:25px;
+    }
+
+    .food-item{
+      margin-bottom:22px;
+      padding-bottom:18px;
+      border-bottom:1px solid #e6e6e6;
+    }
+
+    .food-item:last-child{
+      border-bottom:none;
+      margin-bottom:0;
+      padding-bottom:0;
+    }
+
+    .food-item h3{
+      color:#1f5d57;
+      margin-bottom:8px;
+      font-size:1.05rem;
+    }
+
+    .food-item p{
+      font-size:0.96rem;
+    }
+
+    .special{
+      margin-top:50px;
+      background:white;
+      border-radius:18px;
+      padding:35px;
+      box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .special h2{
+      color:#1f5d57;
+      margin-bottom:25px;
+      text-align:center;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:20px;
+    }
+
+    th{
+      background:#1f5d57;
+      color:white;
+      padding:14px;
+      text-align:left;
+    }
+
+    td{
+      padding:14px;
+      border-bottom:1px solid #ddd;
+      vertical-align:top;
+    }
+
+    tr:nth-child(even){
+      background:#f8f8f8;
+    }
+
+    .back-btn{
+      display:inline-block;
+      margin-top:40px;
+      padding:12px 24px;
+      background:#1f5d57;
+      color:white;
+      text-decoration:none;
+      border-radius:8px;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .back-btn:hover{
+      background:#164742;
+    }
+
+    footer{
+      background:#1f5d57;
+      color:white;
+      text-align:center;
+      padding:25px 20px;
+      margin-top:60px;
+    }
+
+    @media(max-width:768px){
+
+      header h1{
+        font-size:1.8rem;
+      }
+
+      .hero h2{
+        font-size:2rem;
+      }
+
+      table{
+        font-size:0.9rem;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Preporučene namirnice</h1>
+
+    <p>
+      Namirnice koje mogu pomoći organizmu tijekom kemoterapije
+      te one koje je preporučljivo izbjegavati.
+    </p>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h2>Odabir hrane može pomoći organizmu</h2>
+
+    <p>
+      Tijekom kemoterapije preporučuje se lagana, hranjiva i sigurna prehrana
+      koja ne opterećuje probavni sustav.
+    </p>
+  </section>
+
+  <!-- SADRŽAJ -->
+  <main class="container">
+
+    <section class="intro">
+      <h2 style="color:#1f5d57; margin-bottom:15px;">
+        Smjernice prehrane
+      </h2>
+
+      <p>
+        Tijekom liječenja važno je birati namirnice koje osiguravaju dovoljno
+        energije, proteina, vitamina i tekućine, ali istovremeno ne nadražuju
+        želudac i sluznicu usne šupljine.
+      </p>
+    </section>
+
+    <!-- GRID -->
+    <section class="grid">
+
+      <!-- PREPORUČENE -->
+      <div class="card">
+
+        <div class="card-header good">
+          ✅ Preporučene namirnice
+        </div>
+
+        <div class="card-content">
+
+          <div class="food-item">
+            <h3>Piletina, puretina i riba</h3>
+            <p>
+              Bogate bjelančevinama i lako probavljive.
+            </p>
+          </div>
+
+          <div class="food-item">
+            <h3>Kuhana jaja</h3>
+            <p>
+              Visokokvalitetan izvor proteina i energije.
+            </p>
+          </div>
+
+          <div class="food-item">
+            <h3>Jogurt, svježi sir i acidofil</h3>
+            <p>
+              Pomažu probavi i održavanju crijevne flore.
+            </p>
+          </div>
+
+          <div class="food-item">
+            <h3>Bijeli kruh, riža i pire krumpir</h3>
+            <p>
+              Lagani za probavu i dobar izvor energije.
+            </p>
+          </div>
+
+          <div class="food-item">
+            <h3>Kuhano i pasirano povrće</h3>
+            <p>
+              Mrkva, tikvice, špinat i blitva bogati su vitaminima.
+            </p>
+          </div>
+
+          <div class="food-item">
+            <h3>Mekano voće</h3>
+            <p>
+              Banana, kruška i kuhane jabuke dobro se podnose.
+            </p>
+          </div>
+
+          <div class="food-item">
+            <h3>Juhe i krem juhe</h3>
+            <p>
+              Pomažu hidraciji i lakšem unosu hranjivih tvari.
+            </p>
+          </div>
+
+          <div class="food-item">
+            <h3>Maslinovo ulje</h3>
+            <p>
+              Povećava energetsku vrijednost obroka.
+            </p>
+          </div>
+
+          <div class="food-item">
+            <h3>Biljni čajevi</h3>
+            <p>
+              Đumbir, kamilica i menta mogu pomoći kod mučnine.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- IZBJEGAVATI -->
+      <div class="card">
+
+        <div class="card-header bad">
+          ❌ Namirnice koje treba izbjegavati
+        </div>
+
+        <div class="card-content">
+
+          <div class="food-item">
+            <h3>Pržena i pohana hrana</h3>
+            <p>
+              Teško se probavlja i može pojačati mučninu.
+            </p>
+          </div>
+
+          <div class="food-item">
+            <h3>Masno crveno meso i suhomesnati proizvodi</h3>
+            <p>
+              Opterećuju probavu i često imaju intenzivan miris.
+            </p>
+          </div>
+
+          <div class="food-item">
+            <h3>Sirovo meso, riba i jaja</h3>
+            <p>
+              Povećavaju rizik od infekcija.
+            </p>
+          </div>
+
+          <div class="food-item">
+            <h3>Nepasterizirani mliječni proizvodi</h3>
+            <p>
+              Mogu sadržavati štetne bakterije.
+            </p>
+          </div>
+
+          <div class="food-item">
+            <h3>Jako začinjena hrana</h3>
+            <p>
+              Nadražuje želudac i sluznicu usne šupljine.
+            </p>
+          </div>
+
+          <div class="food-item">
+            <h3>Gazirana pića i alkohol</h3>
+            <p>
+              Mogu uzrokovati dehidraciju i iritaciju želuca.
+            </p>
+          </div>
+
+          <div class="food-item">
+            <h3>Vrlo kisela hrana</h3>
+            <p>
+              Citrusi i ocat mogu iritirati ranice u ustima.
+            </p>
+          </div>
+
+          <div class="food-item">
+            <h3>Hrana koja nadima</h3>
+            <p>
+              Grah, kupus i luk mogu pojačati nadutost i grčeve.
+            </p>
+          </div>
+
+          <div class="food-item">
+            <h3>Tvrda i suha hrana</h3>
+            <p>
+              Čips, pereci i tvrdi dvopek mogu ozlijediti sluznicu.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- POSEBNA STANJA -->
+    <section class="special">
+
+      <h2>📌 Posebni slučajevi i prilagodba prehrane</h2>
+
+      <table>
+
+        <tr>
+          <th>Stanje</th>
+          <th>Što izbjegavati</th>
+          <th>Zašto</th>
+        </tr>
+
+        <tr>
+          <td>Leukopenija</td>
+          <td>Sirovo meso, sirova jaja, nepasterizirani proizvodi</td>
+          <td>Povećan rizik od infekcija</td>
+        </tr>
+
+        <tr>
+          <td>Ranice u ustima</td>
+          <td>Kisela i ljuta hrana</td>
+          <td>Iritacija sluznice i bol</td>
+        </tr>
+
+        <tr>
+          <td>Mučnina</td>
+          <td>Masna i jako mirisna hrana</td>
+          <td>Pojačava osjećaj mučnine</td>
+        </tr>
+
+        <tr>
+          <td>Proljev</td>
+          <td>Masna hrana i puno vlakana</td>
+          <td>Može pogoršati proljev</td>
+        </tr>
+
+        <tr>
+          <td>Zatvor</td>
+          <td>Premalo tekućine i vlakana</td>
+          <td>Otežava probavu</td>
+        </tr>
+
+      </table>
+
+    </section>
+
+    <a href="index.html" class="back-btn">
+      ← Povratak na naslovnicu
+    </a>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      © 2026 Prehrana tijekom kemoterapije
+    </p>
+  </footer>
+
+</body>
+</html>
+```

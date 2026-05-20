@@ -1,0 +1,231 @@
+```html
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prehrana tijekom kemoterapije</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background:#f5f6f7;
+      color:#333;
+      line-height:1.6;
+    }
+
+    /* HEADER */
+    header{
+      background:#1f5d57;
+      color:white;
+      padding:30px 20px;
+      text-align:center;
+      box-shadow:0 2px 10px rgba(0,0,0,0.15);
+    }
+
+    header h1{
+      font-size:2.2rem;
+      margin-bottom:10px;
+    }
+
+    header p{
+      max-width:800px;
+      margin:0 auto;
+      font-size:1.05rem;
+      opacity:0.95;
+    }
+
+    /* HERO */
+    .hero{
+      background:
+        linear-gradient(rgba(31,93,87,0.75), rgba(31,93,87,0.75)),
+        url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1200&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      padding:90px 20px;
+      text-align:center;
+      color:white;
+    }
+
+    .hero h2{
+      font-size:2.5rem;
+      margin-bottom:15px;
+    }
+
+    .hero p{
+      max-width:850px;
+      margin:auto;
+      font-size:1.1rem;
+    }
+
+    /* CARDS */
+    .container{
+      max-width:1200px;
+      margin:60px auto;
+      padding:0 20px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:white;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 6px 20px rgba(0,0,0,0.08);
+      transition:0.3s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .card-content{
+      padding:25px;
+      text-align:center;
+    }
+
+    .card-content h3{
+      font-size:1.3rem;
+      color:#1f5d57;
+      margin-bottom:15px;
+      min-height:70px;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:10px;
+      padding:12px 24px;
+      background:#1f5d57;
+      color:white;
+      text-decoration:none;
+      border-radius:8px;
+      transition:0.3s;
+      font-weight:bold;
+    }
+
+    .btn:hover{
+      background:#164742;
+    }
+
+    /* FOOTER */
+    footer{
+      background:#1f5d57;
+      color:white;
+      text-align:center;
+      padding:25px 20px;
+      margin-top:60px;
+    }
+
+    footer p{
+      opacity:0.9;
+    }
+
+    @media(max-width:768px){
+
+      header h1{
+        font-size:1.8rem;
+      }
+
+      .hero h2{
+        font-size:2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Prehrana tijekom kemoterapije</h1>
+    <p>
+      Savjeti, preporuke i prijedlozi obroka za lakšu i kvalitetniju prehranu tijekom liječenja.
+    </p>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h2>Podrška kroz pravilnu prehranu</h2>
+    <p>
+      Informacije o prehrani tijekom kemoterapije, preporučenim namirnicama
+      te prijedlozima jela i recepata.
+    </p>
+  </section>
+
+  <!-- GLAVNI IZBOR -->
+  <main class="container">
+
+    <div class="cards">
+
+      <!-- 1 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=1200&auto=format&fit=crop" alt="Preporuke prehrane">
+
+        <div class="card-content">
+          <h3>Preporuke za prehranu tijekom kemoterapije</h3>
+
+          <a href="Nada_DT/1_preporuke.html" class="btn">
+            Otvori
+          </a>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1200&auto=format&fit=crop" alt="Namirnice">
+
+        <div class="card-content">
+          <h3>
+            Preporučene namirnice i namirnice koje treba izbjegavati
+          </h3>
+
+          <a href="Nada_DT/2_namirnice.html" class="btn">
+            Otvori
+          </a>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=1200&auto=format&fit=crop" alt="Jela i recepti">
+
+        <div class="card-content">
+          <h3>Prijedlozi jela i recepti</h3>
+
+          <a href="Nada_DT/3_jela.html" class="btn">
+            Otvori
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      © 2026 Prehrana tijekom kemoterapije
+    </p>
+  </footer>
+
+</body>
+</html>
+```

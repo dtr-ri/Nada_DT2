@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="hr">
 <head>
@@ -215,7 +214,30 @@
       font-weight:bold;
     }
 
+    /* FOOD / ICONS */
 
+    .food-icons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      padding:0 24px 24px;
+      margin-top:-5px;
+    }
+
+    .food-item{
+      background:white;
+      border-radius:12px;
+      padding:10px 14px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.06);
+      font-size:0.95rem;
+    }
+
+    .food-item span{
+      font-size:1.5rem;
+    }
 
     footer{
       background:#1f5d57;
@@ -344,7 +366,19 @@
             Lakše ćete unijeti dovoljno kalorija i proteina, a smanjit će se osjećaj
             mučnine i težine.
           </p>
+          <div class="food-icons">
 
+            <div class="food-item">
+              <span>🍽️🍽️🍽️</span>
+              <small>3 velika obroka</small>
+            </div>
+
+            <div class="food-item">
+              <span>🍽️🍽️🍽️🍽️🍽️</span>
+              <small>5 manjih obroka</small>
+            </div>
+
+          </div>
           <span class="tag">
             🤢 Mučnina
           </span>
@@ -372,7 +406,19 @@
             Meso (piletina, puretina, teletina), riba, jaja, svježi sir,
             jogurt i mahunarke pomažu u očuvanju mišićne mase,
             jačanju imuniteta i oporavku tkiva.
+            Ciljajte na 1-2 g proteina po kg tjelesne mase dnevno
           </p>
+
+          <div class="food-icons">
+
+            <div class="food-item"><span>🍗</span><small>Piletina i puretina</small></div>
+            <div class="food-item"><span>🐟</span><small>Riba</small></div>
+            <div class="food-item"><span>🥚</span><small>Jaja</small></div>
+            <div class="food-item"><span>🧀</span><small>Svježi sir</small></div>
+            <div class="food-item"><span>🥛</span><small>Jogurt</small></div>
+            <div class="food-item"><span>🫘</span><small>Mahunarke</small></div>
+
+          </div>
 
           <span class="tag">
             ⚖️ Gubitak težine
@@ -398,9 +444,16 @@
 
         <div class="accordion-content">
           <p>
-            Voda, biljni čajevi, juhe i razrijeđeni sokovi pomažu hidraciji.
-            Tekućinu pijte između obroka.
+            Voda, biljni čajevi (đumbir, kamilica, menta), bistre juhe i razrijeđeni voćni sokovi. 
+            Izbjegavajte alkohol i napitke s puno kofeina. 
+            Tekućinu pijte između obroka kako ne biste zasitili želudac prije jela
           </p>
+          <div class="food-icons">
+
+            <div class="food-item"><span>💧</span><small>Voda</small></div>
+            <div class="food-item"><span>🍵</span><small>Biljni čaj</small></div>
+            <div class="food-item"><span>🍲</span><small>Bistra juha</small></div>
+          </div>
         </div>
 
       </div>
@@ -422,9 +475,17 @@
 
         <div class="accordion-content">
           <p>
-            Kod ranica u ustima preporučuju se kašaste i mekane namirnice:
-            pire krumpir, juhe, pudinzi, smoothieji i kuhana riža.
+            Kod ranica u ustima ili suhoće usne šupljine preporučuju se kašaste i mekane namirnice: pire krumpir, juhe, pudinzi, smoothieji, sladoled, namočeni kruh, kuhana i pasirana riža ili povrće.
           </p>
+          <div class="food-icons">
+
+            <div class="food-item"><span>🥣</span><small>Kaša</small></div>
+            <div class="food-item"><span>🍲</span><small>Juha</small></div>
+            <div class="food-item"><span>🥤</span><small>Smoothie</small></div>
+            <div class="food-item"><span>🍦</span><small>Sladoled</small></div>
+            <div class="food-item"><span>🥬</span><small>Povrtna kaša</small></div>
+
+          </div>
 
           <span class="tag">
             👄 Ranice u ustima
@@ -450,9 +511,16 @@
 
         <div class="accordion-content">
           <p>
-            Ako se pojavi metalni okus u ustima, koristite plastični pribor
-            i dodajte začinsko bilje.
+            Ako se pojavi metalni okus u ustima, koristite drveni ili plastični pribor, mariniranje mesa (ulje, začinsko bilje), dodajte začinsko bilje (bosiljak, ružmarin, đumbir) ili kisele napitke (limunada, sok od naranče) – ukoliko nema bolova u grlu.
           </p>
+          <div class="food-icons">
+
+            <div class="food-item"><span>🥄</span><small>Drveni ili plastični pribor</small></div>
+            <div class="food-item"><span>🫒</span><small>Mariniranje mesa</small></div>
+            <div class="food-item"><span>🌿</span><small>Začinsko bilje</small></div>
+            <div class="food-item"><span>🍋</span><small>Limunada</small></div>
+
+          </div>
         </div>
 
       </div>
@@ -463,7 +531,7 @@
 
         <button class="accordion-btn">
           <span> 
-          Kod mučnine izbjegavajte masnu i jako začinjenu hranu
+          Kod mučnine izbjegavajte masnu, jako začinjenu i jako mirisnu hranu
           </span>
 
           <span class="more-text">
@@ -474,8 +542,14 @@
 
         <div class="accordion-content">
           <p>
-            Jedite hladna ili mlaka jela i pijte tekućinu u malim gutljajima.
+            Jedite hladna ili mlaka jela (mirisi su blaži), a prije ustajanja iz kreveta pojedite dvopek ili kekse. Pijte tekućinu u malim gutljajima kroz slamku.
           </p>
+          <div class="food-icons">
+
+            <div class="food-item"><span>🍘</span><small>Dvopek ili keksi</small></div>
+            <div class="food-item"><span>🥤</span><small>Tekućine na slamku</small></div>
+
+          </div>
 
           <span class="tag">
             🤢 Mučnina
@@ -490,7 +564,7 @@
 
         <button class="accordion-btn">
           <span> 
-          Kod proljeva pijte oralne rehidracijske otopine
+          Kod proljeva pijte oralne rehidracijske otopine ili juhe
           </span>
 
           <span class="more-text">
@@ -501,10 +575,17 @@
 
         <div class="accordion-content">
           <p>
-            Nadoknadite vodu i elektrolite. Jedite kuhanu rižu,
-            bananu i kuhani krumpir.
+            Nadoknadite vodu i elektrolite. Jedite kuhanu rižu, kuhani krumpir, bananu, bijeli kruh, dobro kuhano meso i ribu. Izbjegavajte mliječne proizvode, vlaknasto povrće (kupus, grah) i prženu hranu.
           </p>
+          <div class="food-icons">
 
+            <div class="food-item"><span>💧</span><small>Voda</small></div>
+            <div class="food-item"><span>🍚</span><small>Riža</small></div>
+            <div class="food-item"><span>🍌</span><small>Banana</small></div>
+            <div class="food-item"><span>🍞</span><small>Bijeli kruh</small></div>
+            <div class="food-item"><span>🐟</span><small>Kuhana riba</small></div>
+
+          </div>
           <span class="tag">
             🚽 Proljev
           </span>
@@ -529,9 +610,19 @@
 
         <div class="accordion-content">
           <p>
-            Zobene pahuljice, suhe šljive, chia sjemenke i dovoljno tekućine
-            mogu pomoći regulaciji probave.
+            Mekinje, chia sjemenke, suhe šljive, datulje, zobene pahuljice, 
+            kuhano povrće i svježe voće (ako nema ranica u ustima). 
+            Pijte najmanje 8 čaša tekućine dnevno i budite tjelesno aktivni koliko možete.
           </p>
+          <div class="food-icons">
+
+            <div class="food-item"><span>🌾</span><small>Mekinje</small></div>
+            <div class="food-item"><span>🥣</span><small>Zobene</small></div>
+            <div class="food-item"><span>🫘</span><small>Chia</small></div>
+            <div class="food-item"><span>🍑</span><small>Suhe šljive</small></div>
+            <div class="food-item"><span>🍎</span><small>Voće</small></div>
+
+          </div>
 
           <span class="tag">
             🚽 Zatvor
@@ -557,10 +648,20 @@
 
         <div class="accordion-content">
           <p>
-            Dodajte maslinovo ulje, vrhnje, sir i mlijeko u prahu
+            Dodajte maslinovo ulje, maslac ili vrhnje u juhe i pire; 
+            mlijeko u prahu u kašice i napitke; 
+            naribani sir u tjesteninu i jaja; 
+            orašaste plodove i sjemenke u jogurt ili smoothie
             kako biste povećali energetsku vrijednost obroka.
           </p>
+          <div class="food-icons">
 
+            <div class="food-item"><span>🫒</span><small>Maslinovo ulje</small></div>
+            <div class="food-item"><span>🧈</span><small>Maslac</small></div>
+            <div class="food-item"><span>🧀</span><small>Sir</small></div>
+            <div class="food-item"><span>🥜</span><small>Orašasti plodovi</small></div>
+
+          </div>
           <span class="tag">
             ⚖️ Gubitak težine
           </span>
@@ -585,9 +686,16 @@
 
         <div class="accordion-content">
           <p>
-            Vitamini i biljni pripravci mogu utjecati na terapiju.
-            Koristite ih samo uz preporuku liječnika.
+            Vitamini, minerali i biljni pripravci (npr. gospina trava, echinacea, češnjak u visokim dozama) 
+            mogu smanjiti učinkovitost kemoterapije ili povećati nuspojave. 
+            Dodatke prehrani uvodite isključivo uz preporuku liječnika ili nutricionista na temelju laboratorijskih nalaza.
           </p>
+          <div class="food-icons">
+
+            <div class="food-item"><span>💊</span><small>Vitamini i minerali</small></div>
+            <div class="food-item"><span>🧴</span><small>Biljni pripravci</small></div>
+
+          </div>
         </div>
 
       </div>
@@ -598,7 +706,7 @@
 
         <button class="accordion-btn">
           <span> 
-          Planirajte obroke prema osjećaju energije
+          Planirajte obroke prema osjećaju – jedite kada imate najviše energije
           </span>
 
           <span class="more-text">
@@ -609,9 +717,16 @@
 
         <div class="accordion-content">
           <p>
-            Većina bolesnika ima bolji apetit ujutro pa tada jedite obilnije obroke.
+            Većina bolesnika ima bolji apetit ujutro. 
+            Neka doručak i jutarnji međuobroci budu obilniji, 
+            a navečer koristite gotove enteralne napitke ako ste umorni.
           </p>
+          <div class="food-icons">
 
+            <div class="food-item"><span>🍽️🍽️</span><small>Obilniji doručak</small></div>
+            <div class="food-item"><span>🍽️🍽️🍽️</span><small>Lakši kasniji obroci</small></div>
+
+          </div>
           <span class="tag">
             😵 Umor
           </span>
@@ -638,7 +753,19 @@
         <div class="accordion-content">
           <p>
             Važno je unijeti dovoljno hrane i energije čak i kada izbor nije idealan.
+            U danima kada ne možete jesti povrće ili kuhano meso, 
+            slobodno posegnite za paštetom, konzerviranom ribom, 
+            ćevapima, pohano meso ili čak brzom hranom – bitno je da unesete bilo kakvu hranu koja vam odgovara
           </p>
+
+          <div class="food-icons">
+
+            <div class="food-item"><span>🥫</span><small>Pašteta</small></div>
+            <div class="food-item"><span>🍖</span><small>Ćevapi</small></div>
+            <div class="food-item"><span>🍗</span><small>Pohano meso</small></div>
+            <div class="food-item"><span>🍔</span><small>Burger</small></div>
+
+          </div>
           <span class="tag">
             😶 Gubitak apetita
           </span>
@@ -663,8 +790,11 @@
 
         <div class="accordion-content">
           <p>
-            U danima bez terapije uživajte u omiljenim jelima
-            kako biste zadržali pozitivan odnos prema hrani.
+            Mnogi bolesnici kasnije razviju odbojnost 
+            prema hrani koju su jeli neposredno prije ili za vrijeme terapije. 
+            U danima bez terapije uživajte u omiljenim jelima 
+            kako biste sačuvali pozitivan odnos prema hrani.
+
           </p>
         </div>
 
@@ -687,9 +817,18 @@
 
         <div class="accordion-content">
           <p>
-            Žvakaće gume bez šećera, bomboni i sladoled mogu pomoći
-            kod suhih usta.
+            Žvačite žvakaću gumu bez šećera, 
+            sisajte tvrde bombone (mentol, limun), 
+            jedite sladoled ili sorbet. 
+            Izbjegavajte alkohol, kofein i suhu hranu poput dvopeka ili čipsa.
           </p>
+          <div class="food-icons">
+
+            <div class="food-item"><span>🍬</span><small>Bomboni</small></div>
+            <div class="food-item"><span>🧊</span><small>Sorbet</small></div>
+            <div class="food-item"><span>🍦</span><small>Sladoled</small></div>
+
+          </div>
         </div>
 
       </div>
@@ -711,10 +850,16 @@
 
         <div class="accordion-content">
           <p>
-            Jedite hladna ili mlaka jela i izbjegavajte prostorije
-            u kojima se kuha.
+            Jedite hladna ili mlaka jela i izbjegavajte prostorije u kojima se kuha,
+            pijte tekućinu kroz slamku.
           </p>
+          <div class="food-icons">
 
+            <div class="food-item"><span>🪟</span><small>Provjetravanje</small></div>
+            <div class="food-item"><span>🚫🍳</span><small>Izbjegavat kuhinju</small></div>
+            <div class="food-item"><span>🥤</span><small>Tekućine na slamku</small></div>
+
+          </div>
           <span class="tag">
             🤢 Mučnina
           </span>
@@ -728,7 +873,7 @@
 
         <button class="accordion-btn">
           <span> 
-          Povećajte energetsku gustoću obroka
+          Povećajte energetsku gustoću obroka, ako gubite na težini
           </span>
 
           <span class="more-text">
@@ -739,10 +884,19 @@
 
         <div class="accordion-content">
           <p>
-            Dodajte sušeno voće, sjemenke i punomasne mliječne proizvode
+            Dodajte sušeno voće (goji, šljive, brusnice) u jogurt i žitarice, 
+            sjemenke (lan, chia, bućine) u salate i juhe,
+            a umjesto obranog mlijeka koristite punomasno i mlijeko u prahu
             kako biste povećali unos energije.
           </p>
 
+          <div class="food-icons">
+
+            <div class="food-item"><span>🍇</span><small>Suho voće</small></div>
+            <div class="food-item"><span>🫘</span><small>Chia, lan, buča</small></div>
+            <div class="food-item"><span>🥛</span><small>Punomasno mlijeko</small></div>
+
+          </div>
           <span class="tag">
             ⚖️ Gubitak težine
           </span>
@@ -756,7 +910,7 @@
 
         <button class="accordion-btn">
           <span> 
-          Pazite na higijenu hrane
+          Pazite na higijenu hrane zbog smanjenog imuniteta
           </span>
 
           <span class="more-text">
@@ -767,8 +921,16 @@
 
         <div class="accordion-content">
           <p>
-            Izbjegavajte sirovu ribu, sirova jaja i nepasterizirane proizvode.
+            Izbjegavajte sirovu ribu, sirova jaja, nepasterizirane mliječne proizvode, 
+            pljesnive sireve, nedovoljno termički obrađeno meso. 
+            Voće i povrće dobro operite ili ogulite.
           </p>
+          <div class="food-icons">
+
+            <div class="food-item"><span>🍎🚿</span><small>Pranje voća</small></div>
+            <div class="food-item"><span>🔪🍐</span><small>Guljenje</small></div>
+
+          </div>
         </div>
 
       </div>
@@ -874,4 +1036,4 @@
 
 </body>
 </html>
-```
+

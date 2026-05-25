@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Preporuke za prehranu tijekom kemoterapije</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background:#f5f6f7;
+      color:#333;
+      line-height:1.7;
+    }
+
+    header{
+      background:#1f5d57;
+      color:white;
+      padding:30px 20px;
+      text-align:center;
+    }
+
+    header h1{
+      font-size:2.2rem;
+      margin-bottom:10px;
+    }
+
+    header p{
+      max-width:900px;
+      margin:auto;
+      opacity:0.95;
+    }
+
+    .hero{
+      background:
+      linear-gradient(rgba(31,93,87,0.75), rgba(31,93,87,0.75)),
+      url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1400&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      color:white;
+      text-align:center;
+      padding:90px 20px;
+    }
+
+    .hero h2{
+      font-size:2.5rem;
+      margin-bottom:15px;
+    }
+
+    .container{
+      max-width:1100px;
+      margin:50px auto;
+      padding:0 20px;
+    }
+
+    .intro{
+      background:white;
+      padding:30px;
+      border-radius:16px;
+      margin-bottom:40px;
+      box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .recommendations{
+      display:grid;
+      gap:25px;
+    }
+
+    .card{
+      background:white;
+      padding:30px;
+      border-radius:16px;
+      box-shadow:0 4px 15px rgba(0,0,0,0.08);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .card h3{
+      color:#1f5d57;
+      margin-bottom:15px;
+      font-size:1.3rem;
+    }
+
+    .card p{
+      font-size:1rem;
+    }
+
+    .back-btn{
+      display:inline-block;
+      margin-top:40px;
+      padding:12px 24px;
+      background:#1f5d57;
+      color:white;
+      text-decoration:none;
+      border-radius:8px;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .back-btn:hover{
+      background:#164742;
+    }
+
+
+
+    .accordion{
+      background:white;
+      border-radius:16px;
+      margin-bottom:20px;
+      overflow:hidden;
+      box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .accordion-btn{
+      width:100%;
+      background:#ffffff;
+      color:#1f5d57;
+      padding:24px;
+      border:none;
+      outline:none;
+      text-align:left;
+      font-size:1.1rem;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+    }
+
+    .accordion-btn:hover{
+      background:#f0f5f4;
+    }
+
+    /* DESNI TEKST */
+
+    .more-text{
+      font-style:italic;
+      font-weight:normal;
+      font-size:0.95rem;
+      color:#6b6b6b;
+      white-space:nowrap;
+    }
+
+    .accordion-content{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height 0.35s ease;
+      background:#fafafa;
+    }
+
+    .accordion-content p{
+      padding:0 24px 24px;
+    }
+
+
+    .symptoms-filter{
+      margin-bottom:40px;
+    }
+
+    .filter-title{
+      color:#1f5d57;
+      margin-bottom:20px;
+      font-size:1.5rem;
+    }
+
+    .filter-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .filter-btn{
+      background:white;
+      border:2px solid #1f5d57;
+      color:#1f5d57;
+      padding:12px 18px;
+      border-radius:30px;
+      cursor:pointer;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .filter-btn:hover{
+      background:#1f5d57;
+      color:white;
+    }
+
+    .filter-btn.active{
+      background:#1f5d57;
+      color:white;
+    }
+
+    .tag{
+      display:inline-block;
+      margin-top:15px;
+      background:#e7f3f1;
+      color:#1f5d57;
+      padding:6px 12px;
+      border-radius:20px;
+      font-size:0.9rem;
+      font-weight:bold;
+    }
+
+    /* FOOD / ICONS */
+
+    .food-icons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      padding:0 24px 24px;
+      margin-top:-5px;
+    }
+
+    .food-item{
+      background:white;
+      border-radius:12px;
+      padding:10px 14px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.06);
+      font-size:0.95rem;
+    }
+
+    .food-item span{
+      font-size:1.5rem;
+    }
+
+    footer{
+      background:#1f5d57;
+      color:white;
+      text-align:center;
+      padding:25px 20px;
+      margin-top:60px;
+    }
+
+    @media(max-width:768px){
+
+      header h1{
+        font-size:1.8rem;
+      }
+
+      .hero h2{
+        font-size:2rem;
+      }
+
+      .card{
+        padding:22px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Preporuke za prehranu tijekom kemoterapije</h1>
+
+    <p>
+      Smjernice i savjeti za lakšu prehranu, očuvanje energije i podršku organizmu tijekom liječenja.
+    </p>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h2>Pravilna prehrana kao podrška liječenju</h2>
+
+    <p>
+      Male prilagodbe prehrane mogu pomoći kod mučnine, gubitka apetita,
+      umora i drugih nuspojava kemoterapije.
+    </p>
+  </section>
+
+  <!-- SADRŽAJ -->
+  <main class="container">
+
+    <section class="intro">
+      
+      <section class="symptoms-filter">
+
+        <h2 class="filter-title">
+          Odaberite simptom
+        </h2>
+
+        <div class="filter-buttons">
+
+          <button class="filter-btn" data-symptom="Mučnina">
+            🤢 Mučnina
+          </button>
+
+          <button class="filter-btn" data-symptom="Umor">
+            😵 Umor
+          </button>
+
+          <button class="filter-btn" data-symptom="Ranice u ustima">
+            👄 Ranice u ustima
+          </button>
+
+          <button class="filter-btn" data-symptom="Proljev">
+            🚽 Proljev
+          </button>
+
+          <button class="filter-btn" data-symptom="Zatvor">
+            🚽 Zatvor
+          </button>
+
+          <button class="filter-btn" data-symptom="Gubitak apetita">
+            😶 Gubitak apetita
+          </button>
+
+          <button class="filter-btn" data-symptom="Gubitak težine">
+            ⚖️ Gubitak težine
+          </button>
+
+        </div>
+
+      </section>
+      <h2 style="color:#1f5d57; margin-bottom:15px;">
+        Važne preporuke
+      </h2>
+
+      <p>
+        Tijekom kemoterapije organizmu je potrebna dodatna podrška kroz pravilnu,
+        uravnoteženu i lako probavljivu prehranu. U nastavku se nalaze preporuke
+        koje mogu pomoći kod održavanja tjelesne snage, hidracije i boljeg podnošenja terapije.
+      </p>
+    </section>
+
+       
+        
+    <section class="recommendations">
+
+      <!-- 1 -->
+
+      <div class="accordion recommendation" data-symptom="Mučnina">
+
+        <button class="accordion-btn">
+          <span> 
+          Jedite male obroke svaka 2-3 sata
+          </span>
+
+          <span class="more-text">
+            klik za više
+          </span>
+
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Umjesto tri velika obroka, rasporedite dnevni unos hrane u 5-6 manjih obroka.
+            Lakše ćete unijeti dovoljno kalorija i proteina, a smanjit će se osjećaj
+            mučnine i težine.
+          </p>
+          <div class="food-icons">
+
+            <div class="food-item">
+              <span>🍽️🍽️🍽️</span>
+              <small>3 velika obroka</small>
+            </div>
+
+            <div class="food-item">
+              <span>🍽️🍽️🍽️🍽️🍽️</span>
+              <small>5 manjih obroka</small>
+            </div>
+
+          </div>
+          <span class="tag">
+            🤢 Mučnina
+          </span>
+        </div>
+
+      </div>
+
+      <!-- 2 -->
+
+      <div class="accordion recommendation" data-symptom="Gubitak težine">
+
+        <button class="accordion-btn">
+          <span> 
+          Dajte prednost namirnicama bogatim bjelančevinama
+          </span>
+
+          <span class="more-text">
+            klik za više
+          </span>
+
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Meso (piletina, puretina, teletina), riba, jaja, svježi sir,
+            jogurt i mahunarke pomažu u očuvanju mišićne mase,
+            jačanju imuniteta i oporavku tkiva.
+            Ciljajte na 1-2 g proteina po kg tjelesne mase dnevno
+          </p>
+
+          <div class="food-icons">
+
+            <div class="food-item"><span>🍗</span><small>Piletina i puretina</small></div>
+            <div class="food-item"><span>🐟</span><small>Riba</small></div>
+            <div class="food-item"><span>🥚</span><small>Jaja</small></div>
+            <div class="food-item"><span>🧀</span><small>Svježi sir</small></div>
+            <div class="food-item"><span>🥛</span><small>Jogurt</small></div>
+            <div class="food-item"><span>🫘</span><small>Mahunarke</small></div>
+
+          </div>
+
+          <span class="tag">
+            ⚖️ Gubitak težine
+          </span>
+        </div>
+
+      </div>
+
+      <!-- 3 -->
+
+      <div class="accordion recommendation">
+
+        <button class="accordion-btn">
+          <span> 
+          Pijte dovoljno tekućine (1,5–2 litre dnevno)
+          </span>
+
+          <span class="more-text">
+            klik za više
+          </span>
+
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Voda, biljni čajevi (đumbir, kamilica, menta), bistre juhe i razrijeđeni voćni sokovi. 
+            Izbjegavajte alkohol i napitke s puno kofeina. 
+            Tekućinu pijte između obroka kako ne biste zasitili želudac prije jela
+          </p>
+          <div class="food-icons">
+
+            <div class="food-item"><span>💧</span><small>Voda</small></div>
+            <div class="food-item"><span>🍵</span><small>Biljni čaj</small></div>
+            <div class="food-item"><span>🍲</span><small>Bistra juha</small></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 4 -->
+
+      <div class="accordion recommendation" data-symptom="Ranice u ustima">
+
+        <button class="accordion-btn">
+          <span> 
+          Birajte hranu koja se lako žvače i guta
+          </span>
+
+          <span class="more-text">
+            klik za više
+          </span>
+
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Kod ranica u ustima ili suhoće usne šupljine preporučuju se kašaste i mekane namirnice: pire krumpir, juhe, pudinzi, smoothieji, sladoled, namočeni kruh, kuhana i pasirana riža ili povrće.
+          </p>
+          <div class="food-icons">
+
+            <div class="food-item"><span>🥣</span><small>Kaša</small></div>
+            <div class="food-item"><span>🍲</span><small>Juha</small></div>
+            <div class="food-item"><span>🥤</span><small>Smoothie</small></div>
+            <div class="food-item"><span>🍦</span><small>Sladoled</small></div>
+            <div class="food-item"><span>🥬</span><small>Povrtna kaša</small></div>
+
+          </div>
+
+          <span class="tag">
+            👄 Ranice u ustima
+          </span>
+        </div>
+
+      </div>
+
+      <!-- 5 -->
+
+      <div class="accordion recommendation">
+
+        <button class="accordion-btn">
+          <span> 
+          Prilagodite okus i miris hrane
+          </span>
+
+          <span class="more-text">
+            klik za više
+          </span>
+
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Ako se pojavi metalni okus u ustima, koristite drveni ili plastični pribor, mariniranje mesa (ulje, začinsko bilje), dodajte začinsko bilje (bosiljak, ružmarin, đumbir) ili kisele napitke (limunada, sok od naranče) – ukoliko nema bolova u grlu.
+          </p>
+          <div class="food-icons">
+
+            <div class="food-item"><span>🥄</span><small>Drveni ili plastični pribor</small></div>
+            <div class="food-item"><span>🫒</span><small>Mariniranje mesa</small></div>
+            <div class="food-item"><span>🌿</span><small>Začinsko bilje</small></div>
+            <div class="food-item"><span>🍋</span><small>Limunada</small></div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 6 -->
+
+      <div class="accordion recommendation" data-symptom="Mučnina">
+
+        <button class="accordion-btn">
+          <span> 
+          Kod mučnine izbjegavajte masnu, jako začinjenu i jako mirisnu hranu
+          </span>
+
+          <span class="more-text">
+            klik za više
+          </span>
+
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Jedite hladna ili mlaka jela (mirisi su blaži), a prije ustajanja iz kreveta pojedite dvopek ili kekse. Pijte tekućinu u malim gutljajima kroz slamku.
+          </p>
+          <div class="food-icons">
+
+            <div class="food-item"><span>🍘</span><small>Dvopek ili keksi</small></div>
+            <div class="food-item"><span>🥤</span><small>Tekućine na slamku</small></div>
+
+          </div>
+
+          <span class="tag">
+            🤢 Mučnina
+          </span>
+        </div>
+
+      </div>
+
+      <!-- 7 -->
+
+      <div class="accordion recommendation" data-symptom="Proljev">
+
+        <button class="accordion-btn">
+          <span> 
+          Kod proljeva pijte oralne rehidracijske otopine ili juhe
+          </span>
+
+          <span class="more-text">
+            klik za više
+          </span>
+
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Nadoknadite vodu i elektrolite. Jedite kuhanu rižu, kuhani krumpir, bananu, bijeli kruh, dobro kuhano meso i ribu. Izbjegavajte mliječne proizvode, vlaknasto povrće (kupus, grah) i prženu hranu.
+          </p>
+          <div class="food-icons">
+
+            <div class="food-item"><span>💧</span><small>Voda</small></div>
+            <div class="food-item"><span>🍚</span><small>Riža</small></div>
+            <div class="food-item"><span>🍌</span><small>Banana</small></div>
+            <div class="food-item"><span>🍞</span><small>Bijeli kruh</small></div>
+            <div class="food-item"><span>🐟</span><small>Kuhana riba</small></div>
+
+          </div>
+          <span class="tag">
+            🚽 Proljev
+          </span>
+        </div>
+
+      </div>
+
+      <!-- 8 -->
+
+      <div class="accordion recommendation" data-symptom="Zatvor">
+
+        <button class="accordion-btn">
+          <span> 
+          Kod zatvora povećajte unos vlakana i tekućine
+          </span>
+
+          <span class="more-text">
+            klik za više
+          </span>
+
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Mekinje, chia sjemenke, suhe šljive, datulje, zobene pahuljice, 
+            kuhano povrće i svježe voće (ako nema ranica u ustima). 
+            Pijte najmanje 8 čaša tekućine dnevno i budite tjelesno aktivni koliko možete.
+          </p>
+          <div class="food-icons">
+
+            <div class="food-item"><span>🌾</span><small>Mekinje</small></div>
+            <div class="food-item"><span>🥣</span><small>Zobene</small></div>
+            <div class="food-item"><span>🫘</span><small>Chia</small></div>
+            <div class="food-item"><span>🍑</span><small>Suhe šljive</small></div>
+            <div class="food-item"><span>🍎</span><small>Voće</small></div>
+
+          </div>
+
+          <span class="tag">
+            🚽 Zatvor
+          </span>
+        </div>
+
+      </div>
+
+      <!-- 9 -->
+
+      <div class="accordion recommendation" data-symptom="Gubitak težine">
+
+        <button class="accordion-btn">
+          <span> 
+          Hranu obogatite kalorijama i proteinima
+          </span>
+
+          <span class="more-text">
+            klik za više
+          </span>
+
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Dodajte maslinovo ulje, maslac ili vrhnje u juhe i pire; 
+            mlijeko u prahu u kašice i napitke; 
+            naribani sir u tjesteninu i jaja; 
+            orašaste plodove i sjemenke u jogurt ili smoothie
+            kako biste povećali energetsku vrijednost obroka.
+          </p>
+          <div class="food-icons">
+
+            <div class="food-item"><span>🫒</span><small>Maslinovo ulje</small></div>
+            <div class="food-item"><span>🧈</span><small>Maslac</small></div>
+            <div class="food-item"><span>🧀</span><small>Sir</small></div>
+            <div class="food-item"><span>🥜</span><small>Orašasti plodovi</small></div>
+
+          </div>
+          <span class="tag">
+            ⚖️ Gubitak težine
+          </span>
+        </div>
+
+      </div>
+
+      <!-- 10 -->
+
+      <div class="accordion recommendation">
+
+        <button class="accordion-btn">
+          <span> 
+          Ne uzimajte dodatke prehrani na svoju ruku
+          </span>
+
+          <span class="more-text">
+            klik za više
+          </span>
+
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Vitamini, minerali i biljni pripravci (npr. gospina trava, echinacea, češnjak u visokim dozama) 
+            mogu smanjiti učinkovitost kemoterapije ili povećati nuspojave. 
+            Dodatke prehrani uvodite isključivo uz preporuku liječnika ili nutricionista na temelju laboratorijskih nalaza.
+          </p>
+          <div class="food-icons">
+
+            <div class="food-item"><span>💊</span><small>Vitamini i minerali</small></div>
+            <div class="food-item"><span>🧴</span><small>Biljni pripravci</small></div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 11 -->
+
+      <div class="accordion recommendation" data-symptom="Umor">
+
+        <button class="accordion-btn">
+          <span> 
+          Planirajte obroke prema osjećaju – jedite kada imate najviše energije
+          </span>
+
+          <span class="more-text">
+            klik za više
+          </span>
+
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Većina bolesnika ima bolji apetit ujutro. 
+            Neka doručak i jutarnji međuobroci budu obilniji, 
+            a navečer koristite gotove enteralne napitke ako ste umorni.
+          </p>
+          <div class="food-icons">
+
+            <div class="food-item"><span>🍽️🍽️</span><small>Obilniji doručak</small></div>
+            <div class="food-item"><span>🍽️🍽️🍽️</span><small>Lakši kasniji obroci</small></div>
+
+          </div>
+          <span class="tag">
+            😵 Umor
+          </span>
+
+        </div>
+
+      </div>
+
+      <!-- 12 -->
+
+      <div class="accordion recommendation" data-symptom="Gubitak apetita">
+
+        <button class="accordion-btn">
+          <span> 
+          Povremeno odstupite od “strogo zdrave” hrane
+          </span>
+
+          <span class="more-text">
+            klik za više
+          </span>
+
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Važno je unijeti dovoljno hrane i energije čak i kada izbor nije idealan.
+            U danima kada ne možete jesti povrće ili kuhano meso, 
+            slobodno posegnite za paštetom, konzerviranom ribom, 
+            ćevapima, pohano meso ili čak brzom hranom – bitno je da unesete bilo kakvu hranu koja vam odgovara
+          </p>
+
+          <div class="food-icons">
+
+            <div class="food-item"><span>🥫</span><small>Pašteta</small></div>
+            <div class="food-item"><span>🍖</span><small>Ćevapi</small></div>
+            <div class="food-item"><span>🍗</span><small>Pohano meso</small></div>
+            <div class="food-item"><span>🍔</span><small>Burger</small></div>
+
+          </div>
+          <span class="tag">
+            😶 Gubitak apetita
+          </span>
+        </div>
+
+      </div>
+
+      <!-- 13 -->
+
+      <div class="accordion recommendation">
+
+        <button class="accordion-btn">
+          <span> 
+          Ne povezujte hranu s bolešću
+          </span>
+
+          <span class="more-text">
+            klik za više
+          </span>
+
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Mnogi bolesnici kasnije razviju odbojnost 
+            prema hrani koju su jeli neposredno prije ili za vrijeme terapije. 
+            U danima bez terapije uživajte u omiljenim jelima 
+            kako biste sačuvali pozitivan odnos prema hrani.
+
+          </p>
+        </div>
+
+      </div>
+
+      <!-- 14 -->
+
+      <div class="accordion recommendation">
+
+        <button class="accordion-btn">
+          <span> 
+          Kod suhih usta potičite lučenje sline
+          </span>
+
+          <span class="more-text">
+            klik za više
+          </span>
+
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Žvačite žvakaću gumu bez šećera, 
+            sisajte tvrde bombone (mentol, limun), 
+            jedite sladoled ili sorbet. 
+            Izbjegavajte alkohol, kofein i suhu hranu poput dvopeka ili čipsa.
+          </p>
+          <div class="food-icons">
+
+            <div class="food-item"><span>🍬</span><small>Bomboni</small></div>
+            <div class="food-item"><span>🧊</span><small>Sorbet</small></div>
+            <div class="food-item"><span>🍦</span><small>Sladoled</small></div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 15 -->
+
+      <div class="accordion recommendation" data-symptom="Mučnina">
+
+        <button class="accordion-btn">
+          <span> 
+          Kod mučnine izbjegavajte vruću hranu i jake mirise
+          </span>
+
+          <span class="more-text">
+            klik za više
+          </span>
+
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Jedite hladna ili mlaka jela i izbjegavajte prostorije u kojima se kuha,
+            pijte tekućinu kroz slamku.
+          </p>
+          <div class="food-icons">
+
+            <div class="food-item"><span>🪟</span><small>Provjetravanje</small></div>
+            <div class="food-item"><span>🚫🍳</span><small>Izbjegavat kuhinju</small></div>
+            <div class="food-item"><span>🥤</span><small>Tekućine na slamku</small></div>
+
+          </div>
+          <span class="tag">
+            🤢 Mučnina
+          </span>
+        </div>
+
+      </div>
+
+      <!-- 16 -->
+
+      <div class="accordion recommendation" data-symptom="Gubitak težine">
+
+        <button class="accordion-btn">
+          <span> 
+          Povećajte energetsku gustoću obroka, ako gubite na težini
+          </span>
+
+          <span class="more-text">
+            klik za više
+          </span>
+
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Dodajte sušeno voće (goji, šljive, brusnice) u jogurt i žitarice, 
+            sjemenke (lan, chia, bućine) u salate i juhe,
+            a umjesto obranog mlijeka koristite punomasno i mlijeko u prahu
+            kako biste povećali unos energije.
+          </p>
+
+          <div class="food-icons">
+
+            <div class="food-item"><span>🍇</span><small>Suho voće</small></div>
+            <div class="food-item"><span>🫘</span><small>Chia, lan, buča</small></div>
+            <div class="food-item"><span>🥛</span><small>Punomasno mlijeko</small></div>
+
+          </div>
+          <span class="tag">
+            ⚖️ Gubitak težine
+          </span>
+        </div>
+
+      </div>
+
+      <!-- 17 -->
+
+      <div class="accordion recommendation">
+
+        <button class="accordion-btn">
+          <span> 
+          Pazite na higijenu hrane zbog smanjenog imuniteta
+          </span>
+
+          <span class="more-text">
+            klik za više
+          </span>
+
+        </button>
+
+        <div class="accordion-content">
+          <p>
+            Izbjegavajte sirovu ribu, sirova jaja, nepasterizirane mliječne proizvode, 
+            pljesnive sireve, nedovoljno termički obrađeno meso. 
+            Voće i povrće dobro operite ili ogulite.
+          </p>
+          <div class="food-icons">
+
+            <div class="food-item"><span>🍎🚿</span><small>Pranje voća</small></div>
+            <div class="food-item"><span>🔪🍐</span><small>Guljenje</small></div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <a href="../index.html" class="back-btn">
+      ← Povratak na naslovnicu
+    </a>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      © 2026 Prehrana tijekom kemoterapije
+    </p>
+  </footer>
+
+
+
+<script>
+
+  /* ACCORDION */
+
+  const accordions = document.querySelectorAll(".accordion-btn");
+
+  accordions.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const content = button.nextElementSibling;
+
+      if(content.style.maxHeight){
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+
+    });
+
+  });
+
+  /* FILTER SIMPTOMA */
+
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const recommendations = document.querySelectorAll(".recommendation");
+
+  let activeSymptom = null;
+
+  filterButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const symptom = button.dataset.symptom;
+
+      /* PONOVNI KLIK -> RESET */
+
+      if(activeSymptom === symptom){
+
+        activeSymptom = null;
+
+        filterButtons.forEach(btn =>
+          btn.classList.remove("active")
+        );
+
+        recommendations.forEach(card => {
+          card.style.display = "block";
+        });
+
+        return;
+      }
+
+      /* NOVI FILTER */
+
+      activeSymptom = symptom;
+
+      filterButtons.forEach(btn =>
+        btn.classList.remove("active")
+      );
+
+      button.classList.add("active");
+
+      recommendations.forEach(card => {
+
+        if(card.dataset.symptom === symptom){
+          card.style.display = "block";
+        } else if(!card.dataset.symptom){
+          card.style.display = "none";
+        } else {
+          card.style.display = "none";
+        }
+
+      });
+
+    });
+
+  });
+
+</script>
+
+
+</body>
+</html>
+

@@ -884,30 +884,43 @@
 
     const searchInput = document.getElementById('ingredientSearch');
 
-    searchInput.addEventListener('input', function(){
+    searchInput.addEventListener('input', function () {
 
       const query = this.value.toLowerCase().trim();
 
       document.querySelectorAll('.section').forEach(section => {
 
+        const recipeCards = section.querySelectorAll('.meal-card[data-modal]');
+
+        /* Ako sekcija nema recepte (Doručak, Marenda) */
+        if (recipeCards.length === 0) {
+
+          if (query !== '') {
+            section.style.display = 'none';
+          } else {
+            section.style.display = '';
+          }
+
+          return;
+        }
+
         let visibleCards = 0;
 
-        section.querySelectorAll('.meal-card[data-modal]').forEach(card => {
+        recipeCards.forEach(card => {
 
           const modalId = card.dataset.modal;
-
           const modal = document.getElementById(modalId);
 
           const ingredients = modal.querySelector('ul')
             .innerText
             .toLowerCase();
 
-          if(query === '' || ingredients.includes(query)){
+          if (query === '' || ingredients.includes(query)) {
 
             card.style.display = '';
             visibleCards++;
 
-          }else{
+          } else {
 
             card.style.display = 'none';
 
@@ -915,14 +928,7 @@
 
         });
 
-        if(section.querySelector('.meal-card[data-modal]')){
-
-          section.style.display =
-            visibleCards > 0 || query === ''
-              ? ''
-              : 'none';
-
-        }
+        section.style.display = visibleCards > 0 ? '' : 'none';
 
       });
 

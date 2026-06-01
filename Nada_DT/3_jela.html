@@ -20,10 +20,33 @@
     }
 
     header{
+      position:relative;
       background:#1f5d57;
       color:white;
       text-align:center;
       padding:30px 20px;
+    }
+
+    .home-link{
+      position:absolute;
+      left:20px;
+      top:20px;
+      width:50px;
+      height:50px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      text-decoration:none;
+      font-size:2rem;
+      border-radius:50%;
+      background:rgba(255,255,255,0.15);
+      transition:0.3s;
+    }
+
+    .home-link:hover{
+      background:rgba(255,255,255,0.3);
+      transform:translateX(-3px);
     }
 
     header h1{
@@ -196,6 +219,73 @@
       background:#164742;
     }
 
+
+
+        /* HARMONIKA */
+
+    .accordion-header{
+      width:100%;
+      background:white;
+      border:none;
+      border-left:6px solid #1f5d57;
+      padding:18px 20px;
+      text-align:left;
+      font-size:2rem;
+      font-weight:bold;
+      color:#1f5d57;
+      cursor:pointer;
+      border-radius:12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      transition:0.3s;
+    }
+
+    .accordion-header:hover{
+      background:#eef4f3;
+    }
+
+    .accordion-header::after{
+      font-style:italic;
+      font-weight:normal;
+      font-size:0.95rem;
+      color:#6b6b6b;
+      white-space:nowrap;
+      content:"prikaži više";
+    }
+
+    .accordion-header.active::after{
+      content:"sakrij";
+    }
+
+    .accordion-content{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height 0.4s ease;
+      padding-top:0;
+    }
+
+    .accordion-content.open{
+      padding-top:25px;
+    }
+
+    .search-container{
+      margin-bottom:40px;
+    }
+
+    #ingredientSearch{
+      width:100%;
+      padding:15px 20px;
+      font-size:1rem;
+      border:2px solid #d8d8d8;
+      border-radius:12px;
+      outline:none;
+    }
+
+    #ingredientSearch:focus{
+      border-color:#1f5d57;
+    }
+
     footer{
       background:#1f5d57;
       color:white;
@@ -224,6 +314,10 @@
   <!-- HEADER -->
 
   <header>
+<a href="../index.html" class="home-link" title="Povratak na naslovnicu">
+  ←
+</a>
+    
     <h1>Prijedlozi jela i recepti</h1>
 
     <p>
@@ -245,40 +339,52 @@
 
   <main class="container">
 
+    <!-- pretraga -->
+
+    <div class="search-container">
+
+      <input
+        type="text"
+        id="ingredientSearch"
+        placeholder="🔍 Pretraži po namirnici (npr. riža, piletina, brokula...)"
+      >
+
+    </div>
+
+
+
     <!-- DORUČAK -->
 
     <section class="section">
 
-      <h2 class="section-title">🍳 Doručak</h2>
+      <button class="accordion-header">
+        🍳 Doručak
+      </button>
 
-      <div class="meal-grid">
+      <div class="accordion-content">
 
-        <div class="meal-card">
-          <h3>Griz na mlijeku</h3>
-          <p>
-            Lako probavljiv obrok bogat energijom i proteinima.
-          </p>
-        </div>
+        <div class="meal-grid">
 
-        <div class="meal-card">
-          <h3>Zobene pahuljice s mlijekom i jabukom</h3>
-          <p>
-            Dobar izbor kod zatvora i za dodatnu energiju.
-          </p>
-        </div>
+          <div class="meal-card">
+            <h3>Griz na mlijeku</h3>
+            <p>Lako probavljiv obrok bogat energijom i proteinima.</p>
+          </div>
 
-        <div class="meal-card">
-          <h3>Sendvič s purećom šunkom i jogurtom</h3>
-          <p>
-            Kombinacija proteina, probiotika i ugljikohidrata.
-          </p>
-        </div>
+          <div class="meal-card">
+            <h3>Zobene pahuljice s mlijekom i jabukom</h3>
+            <p>Dobar izbor kod zatvora i za dodatnu energiju.</p>
+          </div>
 
-        <div class="meal-card">
-          <h3>Voćni shake od banane i jabuke</h3>
-          <p>
-            Tekući obrok koji se lako unosi kod gubitka apetita.
-          </p>
+          <div class="meal-card">
+            <h3>Sendvič s purećom šunkom i jogurtom</h3>
+            <p>Kombinacija proteina, probiotika i ugljikohidrata.</p>
+          </div>
+
+          <div class="meal-card">
+            <h3>Voćni shake od banane i jabuke</h3>
+            <p>Tekući obrok koji se lako unosi kod gubitka apetita.</p>
+          </div>
+
         </div>
 
       </div>
@@ -289,9 +395,13 @@
 
     <section class="section">
 
-      <h2 class="section-title">🍎 Marenda</h2>
+      <button class="accordion-header">
+        🍎 Marenda
+      </button>
 
-      <div class="meal-grid">
+      <div class="accordion-content">
+
+        <div class="meal-grid">
 
         <div class="meal-card">
           <h3>Grčki jogurt s borovnicama</h3>
@@ -321,129 +431,149 @@
           </p>
         </div>
 
+        </div>
+
       </div>
 
     </section>
+
 
     <!-- RUČAK -->
+    
 
-    <section class="section">
+        <section class="section">
 
-      <h2 class="section-title">🍲 Ručak</h2>
-
-      <div class="meal-grid">
-
-        <div class="meal-card">
-          <h3>Piletina u mediteranskom umaku</h3>
-
-          <p>
-            Lagano i hranjivo jelo s rižom i povrćem.
-          </p>
-
-          <button class="recipe-btn" onclick="openModal('modal1')">
-            Pogledaj recept
+          <button class="accordion-header">
+            🍲 Ručak
           </button>
-        </div>
 
-        <div class="meal-card">
-          <h3>Teleće meso i aromatična palenta</h3>
+          <div class="accordion-content">
 
-          <p>
-            Mekano meso i lagana palenta bogata energijom.
-          </p>
+            <div class="meal-grid">
 
-          <button class="recipe-btn" onclick="openModal('modal2')">
-            Pogledaj recept
-          </button>
-        </div>
+              <div class="meal-card" data-modal="modal1">
+                <h3>Piletina u mediteranskom umaku</h3>
 
-        <div class="meal-card">
-          <h3>Juneće meso s rižom i mrkvom</h3>
+                <p>
+                  Lagano i hranjivo jelo s rižom i povrćem.
+                </p>
 
-          <p>
-            Kašasti obrok za osobe s otežanim gutanjem.
-          </p>
+                <button class="recipe-btn" onclick="openModal('modal1')">
+                  Pogledaj recept
+                </button>
+              </div>
 
-          <button class="recipe-btn" onclick="openModal('modal3')">
-            Pogledaj recept
-          </button>
-        </div>
+              <div class="meal-card" data-modal="modal2">
+                <h3>Teleće meso i aromatična palenta</h3>
 
-        <div class="meal-card">
-          <h3>Piletina s krumpirom i brokulom</h3>
+                <p>
+                  Mekano meso i lagana palenta bogata energijom.
+                </p>
 
-          <p>
-            Pasirano jelo koje se lako probavlja.
-          </p>
+                <button class="recipe-btn" onclick="openModal('modal2')">
+                  Pogledaj recept
+                </button>
+              </div>
 
-          <button class="recipe-btn" onclick="openModal('modal4')">
-            Pogledaj recept
-          </button>
-        </div>
+              <div class="meal-card" data-modal="modal3">
+                <h3>Juneće meso s rižom i mrkvom</h3>
 
-      </div>
+                <p>
+                  Kašasti obrok za osobe s otežanim gutanjem.
+                </p>
 
-    </section>
+                <button class="recipe-btn" onclick="openModal('modal3')">
+                  Pogledaj recept
+                </button>
+              </div>
+
+              <div class="meal-card" data-modal="modal4">
+                <h3>Piletina s krumpirom i brokulom</h3>
+
+                <p>
+                  Pasirano jelo koje se lako probavlja.
+                </p>
+
+                <button class="recipe-btn" onclick="openModal('modal4')">
+                  Pogledaj recept
+                </button>
+              </div>
+              
+            </div>
+
+          </div>
+
+        </section>
+
 
     <!-- VEČERA -->
+   
 
-    <section class="section">
+        <section class="section">
 
-      <h2 class="section-title">🌙 Večera</h2>
-
-      <div class="meal-grid">
-
-        <div class="meal-card">
-          <h3>Bijela riba na mediteranski</h3>
-
-          <p>
-            Lagana večera bogata proteinima i omega-3 masnim kiselinama.
-          </p>
-
-          <button class="recipe-btn" onclick="openModal('modal5')">
-            Pogledaj recept
+          <button class="accordion-header">
+            🌙 Večera
           </button>
-        </div>
 
-        <div class="meal-card">
-          <h3>Tjestenina sa šampinjonima i kozicama</h3>
+          <div class="accordion-content">
 
-          <p>
-            Lako probavljiva tjestenina s laganim izvorom proteina.
-          </p>
+            <div class="meal-grid">
 
-          <button class="recipe-btn" onclick="openModal('modal6')">
-            Pogledaj recept
-          </button>
-        </div>
+              <div class="meal-card" data-modal="modal5">
+                <h3>Bijela riba na mediteranski</h3>
 
-        <div class="meal-card">
-          <h3>Omlet s tikvicama i paprikom</h3>
+                <p>
+                  Lagana večera bogata proteinima i omega-3 masnim kiselinama.
+                </p>
 
-          <p>
-            Jednostavna večera bogata bjelančevinama.
-          </p>
+                <button class="recipe-btn" onclick="openModal('modal5')">
+                  Pogledaj recept
+                </button>
+              </div>
 
-          <button class="recipe-btn" onclick="openModal('modal7')">
-            Pogledaj recept
-          </button>
-        </div>
+              <div class="meal-card" data-modal="modal6">
+                <h3>Tjestenina sa šampinjonima i kozicama</h3>
 
-        <div class="meal-card">
-          <h3>Toast sa šunkom i sirom</h3>
+                <p>
+                  Lako probavljiva tjestenina s laganim izvorom proteina.
+                </p>
 
-          <p>
-            Brz i jednostavan obrok kod manjka apetita.
-          </p>
+                <button class="recipe-btn" onclick="openModal('modal6')">
+                  Pogledaj recept
+                </button>
+              </div>
 
-          <button class="recipe-btn" onclick="openModal('modal8')">
-            Pogledaj recept
-          </button>
-        </div>
+              <div class="meal-card" data-modal="modal7">
+                <h3>Omlet s tikvicama i paprikom</h3>
 
-      </div>
+                <p>
+                  Jednostavna večera bogata bjelančevinama.
+                </p>
 
-    </section>
+                <button class="recipe-btn" onclick="openModal('modal7')">
+                  Pogledaj recept
+                </button>
+              </div>
+
+              <div class="meal-card" data-modal="modal8">
+                <h3>Toast sa šunkom i sirom</h3>
+
+                <p>
+                  Brz i jednostavan obrok kod manjka apetita.
+                </p>
+
+                <button class="recipe-btn" onclick="openModal('modal8')">
+                  Pogledaj recept
+                </button>
+              </div>
+              
+            </div>
+
+          </div>
+
+        </section>
+
+
 
     <a href="../index.html" class="back-btn">
       ← Povratak na naslovnicu
@@ -721,6 +851,82 @@
 
       });
     }
+
+
+    const accordions = document.querySelectorAll(".accordion-header");
+
+    accordions.forEach(button => {
+
+      button.addEventListener("click", function(){
+
+        const content = this.nextElementSibling;
+        const isOpen = this.classList.contains("active");
+
+        accordions.forEach(item => {
+          item.classList.remove("active");
+
+          const c = item.nextElementSibling;
+          c.style.maxHeight = null;
+          c.classList.remove("open");
+        });
+
+        if(!isOpen){
+          this.classList.add("active");
+          content.style.maxHeight = content.scrollHeight + "px";
+          content.classList.add("open");
+        }
+
+      });
+
+    });
+
+    /*search*/
+
+    const searchInput = document.getElementById('ingredientSearch');
+
+    searchInput.addEventListener('input', function(){
+
+      const query = this.value.toLowerCase().trim();
+
+      document.querySelectorAll('.section').forEach(section => {
+
+        let visibleCards = 0;
+
+        section.querySelectorAll('.meal-card[data-modal]').forEach(card => {
+
+          const modalId = card.dataset.modal;
+
+          const modal = document.getElementById(modalId);
+
+          const ingredients = modal.querySelector('ul')
+            .innerText
+            .toLowerCase();
+
+          if(query === '' || ingredients.includes(query)){
+
+            card.style.display = '';
+            visibleCards++;
+
+          }else{
+
+            card.style.display = 'none';
+
+          }
+
+        });
+
+        if(section.querySelector('.meal-card[data-modal]')){
+
+          section.style.display =
+            visibleCards > 0 || query === ''
+              ? ''
+              : 'none';
+
+        }
+
+      });
+
+    });
 
   </script>
 

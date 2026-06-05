@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prijedlozi jela i recepti</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background:#f5f6f7;
+      color:#333;
+      line-height:1.7;
+    }
+
+    header{
+      position:relative;
+      background:#1f5d57;
+      color:white;
+      text-align:center;
+      padding:30px 20px;
+    }
+
+    .home-link{
+      position:absolute;
+      left:20px;
+      top:20px;
+      width:50px;
+      height:50px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      text-decoration:none;
+      font-size:2rem;
+      border-radius:50%;
+      background:rgba(255,255,255,0.15);
+      transition:0.3s;
+    }
+
+    .home-link:hover{
+      background:rgba(255,255,255,0.3);
+      transform:translateX(-3px);
+    }
+
+    header h1{
+      font-size:2.2rem;
+      margin-bottom:10px;
+    }
+
+    header p{
+      max-width:850px;
+      margin:auto;
+      opacity:0.95;
+    }
+
+    .hero{
+      background:
+      linear-gradient(rgba(31,93,87,0.75), rgba(31,93,87,0.75)),
+      url('https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=1400&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      color:white;
+      text-align:center;
+      padding:90px 20px;
+    }
+
+    .hero h2{
+      font-size:2.5rem;
+      margin-bottom:15px;
+    }
+
+    .container{
+      max-width:1200px;
+      margin:50px auto;
+      padding:0 20px;
+    }
+
+    /*
+    .section{
+      margin-bottom:50px;
+    }
+      */
+    .section{
+      background:#fff;
+      border:2px solid #dfe5e7;
+      border-radius:18px;
+      margin-bottom:25px;
+      overflow:hidden;
+      box-shadow:0 4px 12px rgba(0,0,0,0.05);
+    }
+
+
+
+    .section-title{
+      color:#1f5d57;
+      margin-bottom:25px;
+      font-size:2rem;
+      border-left:6px solid #1f5d57;
+      padding-left:15px;
+    }
+
+    .meal-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+      gap:25px;
+    }
+
+    .meal-card{
+      background:white;
+      border-radius:18px;
+      padding:25px;
+      box-shadow:0 4px 15px rgba(0,0,0,0.08);
+      transition:0.3s;
+    }
+
+    .meal-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .meal-card h3{
+      color:#1f5d57;
+      margin-bottom:15px;
+      font-size:1.2rem;
+    }
+
+    .meal-card p{
+      margin-bottom:15px;
+    }
+
+    .meal-image{
+      width:100%;
+      height:200px; /*može i 180*/
+      object-fit:cover;
+      border-radius:12px;
+      margin-bottom:15px;
+      display:block;
+    }
+
+
+    .recipe-btn{
+      background:#1f5d57;
+      color:white;
+      border:none;
+      padding:10px 18px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .recipe-btn:hover{
+      background:#164742;
+    }
+
+
+
+    /* POPUP */
+
+    .modal{
+      display:none;
+      position:fixed;
+      z-index:999;
+      left:0;
+      top:0;
+      width:100%;
+      height:100%;
+      overflow:auto;
+      background:rgba(0,0,0,0.7);
+      padding:30px 15px;
+    }
+
+    .modal-content{
+      background:white;
+      max-width:800px;
+      margin:auto;
+      padding:35px;
+      border-radius:18px;
+      position:relative;
+      animation:fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(20px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .close{
+      position:absolute;
+      top:15px;
+      right:20px;
+      font-size:32px;
+      cursor:pointer;
+      color:#666;
+    }
+
+    .close:hover{
+      color:#000;
+    }
+
+    .modal-content h2{
+      color:#1f5d57;
+      margin-bottom:20px;
+    }
+
+    .modal-content h4{
+      margin-top:20px;
+      margin-bottom:10px;
+      color:#1f5d57;
+    }
+
+    .modal-content ul,
+    .modal-content ol{
+      margin-left:20px;
+    }
+
+    .back-btn{
+      display:inline-block;
+      margin-top:20px;
+      padding:12px 24px;
+      background:#1f5d57;
+      color:white;
+      text-decoration:none;
+      border-radius:8px;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .back-btn:hover{
+      background:#164742;
+    }
+
+
+
+
+
+    /* HARMONIKA */
+
+    .accordion-header{
+      width:100%;
+      background:white;
+      border:none;
+      border-left:6px solid #1f5d57;
+      padding:18px 20px;
+      text-align:left;
+      font-size:2rem;
+      font-weight:bold;
+      color:#1f5d57;
+      cursor:pointer;
+      border-radius:12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      transition:0.3s;
+    }
+
+    .accordion-header:hover{
+      background:#eef4f3;
+    }
+
+    .accordion-header::after{
+      font-style:italic;
+      font-weight:normal;
+      font-size:0.95rem;
+      color:#6b6b6b;
+      white-space:nowrap;
+      content:"prikaži više";
+    }
+
+    .accordion-header.active::after{
+      content:"sakrij";
+    }
+
+    .accordion-content{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height 0.4s ease;
+      background:#fafafa;
+      border-top:0;
+      padding:0 25px;
+    }
+
+    .accordion-content.open{
+      border-top:1px solid #e5e5e5;
+      padding:25px;
+    }
+        
+    
+
+    /* PODHARMONIKA */
+
+    .sub-accordion{
+      margin-bottom:15px;
+      border:1px solid #ddd;
+      border-radius:12px;
+      overflow:hidden;
+    }
+
+    .sub-header{
+      background:#f3f5f6;
+      color:#1f5d57;
+      padding:15px 20px;
+      cursor:pointer;
+      font-size:1.2rem;
+      font-weight:bold;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .sub-header::after{
+      font-style:italic;
+      font-weight:normal;
+      font-size:0.95rem;
+      color:#6b6b6b;
+      white-space:nowrap;
+      content:"prikaži više";
+    }
+
+    .sub-header.active::after{
+      content:"sakrij";
+    }
+
+    .sub-content{
+      display:none;
+      padding:20px;
+      background:white;
+    }
+
+    .sub-content.open{
+      display:block;
+    }
+    
+
+
+
+    /* search */
+
+
+
+
+    .search-container{
+      margin-bottom:40px;
+    }
+
+    #ingredientSearch{
+      width:100%;
+      padding:15px 20px;
+      font-size:1rem;
+      border:2px solid #d8d8d8;
+      border-radius:12px;
+      outline:none;
+    }
+
+    #ingredientSearch:focus{
+      border-color:#1f5d57;
+    }
+
+    footer{
+      background:#1f5d57;
+      color:white;
+      text-align:center;
+      padding:25px 20px;
+      margin-top:60px;
+    }
+
+    @media(max-width:768px){
+
+      .hero h2{
+        font-size:2rem;
+      }
+
+      .modal-content{
+        padding:25px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+<a href="../index.html" class="home-link" title="Povratak na naslovnicu">
+  ←
+</a>
+    
+    <h1>Prijedlozi jela i recepti</h1>
+
+    <p>
+      Primjeri obroka prilagođenih prehrani tijekom kemoterapije.
+    </p>
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <h2>Lagani, hranjivi i lako probavljivi obroci</h2>
+
+    <p>
+      Odabrana jela mogu pomoći kod mučnine, umora i gubitka apetita.
+    </p>
+  </section>
+
+  <!-- SADRŽAJ -->
+
+  <main class="container">
+
+    <!-- pretraga -->
+
+    <div class="search-container">
+
+      <input
+        type="text"
+        id="ingredientSearch"
+        placeholder="🔍 Pretraži recepte za ručak i večeru po namirnici (npr. riža, piletina, brokula...)"
+      >
+
+    </div>
+
+
+
+    <!-- DORUČAK -->
+
+    <section class="section">
+
+      <button class="accordion-header">
+        🍳 Doručak
+      </button>
+
+      <div class="accordion-content">
+
+        <div class="meal-grid">
+
+          <div class="meal-card">
+            <h3>Griz na mlijeku</h3>
+            <p>Lako probavljiv obrok bogat energijom i proteinima.</p>
+            <img
+              src="3_jela_foto/3_jela_foto_dorucak_01.png"
+              alt="Griz na mlijeku"
+              class="meal-image"
+            >
+          </div>
+
+          <div class="meal-card">
+            <h3>Zobene pahuljice s mlijekom i jabukom</h3>
+            <p>Dobar izbor kod zatvora i za dodatnu energiju.</p>
+          </div>
+
+          <div class="meal-card">
+            <h3>Sendvič s purećom šunkom i jogurtom</h3>
+            <p>Kombinacija proteina, probiotika i ugljikohidrata.</p>
+          </div>
+
+          <div class="meal-card">
+            <h3>Voćni shake od banane i jabuke</h3>
+            <p>Tekući obrok koji se lako unosi kod gubitka apetita.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- MARENDA -->
+
+    <section class="section">
+
+      <button class="accordion-header">
+        🍎 Marenda
+      </button>
+
+      <div class="accordion-content">
+
+        <div class="meal-grid">
+
+        <div class="meal-card">
+          <h3>Grčki jogurt s borovnicama</h3>
+          <p>
+            Proteini, probiotici i antioksidansi u jednom obroku.
+          </p>
+        </div>
+
+        <div class="meal-card">
+          <h3>Smoothie sa zobenim pahuljicama</h3>
+          <p>
+            Tekući međuobrok bogat energijom i vlaknima.
+          </p>
+        </div>
+
+        <div class="meal-card">
+          <h3>Banana</h3>
+          <p>
+            Lako probavljiva i bogata kalijem.
+          </p>
+        </div>
+
+        <div class="meal-card">
+          <h3>Kuhano jaje i tvrdi sir</h3>
+          <p>
+            Mali visokoproteinski međuobrok.
+          </p>
+        </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- RUČAK -->
+    
+
+        <section class="section">
+
+          <button class="accordion-header">
+            🍲 Ručak
+          </button>
+
+          <!-- stari sadržaj harmonike bez pog harmonika
+
+          <div class="accordion-content">
+
+            <div class="meal-grid">
+
+              <div class="meal-card" data-modal="modal1">
+                <h3>Piletina u mediteranskom umaku</h3>
+
+                <p>
+                  Lagano i hranjivo jelo s rižom i povrćem.
+                </p>
+
+                <button class="recipe-btn" onclick="openModal('modal1')">
+                  Pogledaj recept
+                </button>
+              </div>
+
+              <div class="meal-card" data-modal="modal2">
+                <h3>Teleće meso i aromatična palenta</h3>
+
+                <p>
+                  Mekano meso i lagana palenta bogata energijom.
+                </p>
+
+                <button class="recipe-btn" onclick="openModal('modal2')">
+                  Pogledaj recept
+                </button>
+              </div>
+
+              <div class="meal-card" data-modal="modal3">
+                <h3>Juneće meso s rižom i mrkvom</h3>
+
+                <p>
+                  Kašasti obrok za osobe s otežanim gutanjem.
+                </p>
+
+                <button class="recipe-btn" onclick="openModal('modal3')">
+                  Pogledaj recept
+                </button>
+              </div>
+
+              <div class="meal-card" data-modal="modal4">
+                <h3>Piletina s krumpirom i brokulom</h3>
+
+                <p>
+                  Pasirano jelo koje se lako probavlja.
+                </p>
+
+                <button class="recipe-btn" onclick="openModal('modal4')">
+                  Pogledaj recept
+                </button>
+              </div>
+              
+            </div>
+
+          </div>
+
+           -->
+
+          <div class="accordion-content">
+
+          <!-- JUHA -->
+
+          <div class="sub-accordion">
+
+            <div class="sub-header">
+              🥣 Juha
+            </div>
+
+            <div class="sub-content">
+
+              <div class="meal-grid">
+
+                <!-- ovdje ćeš kasnije dodavati juhe -->
+
+                
+                <div class="meal-card" data-modal="modal1">
+                  <h3>Piletina u mediteranskom umaku</h3>
+
+                  <p>
+                    Lagano i hranjivo jelo s rižom i povrćem.
+                  </p>
+                  <img
+                    src="3_jela_foto/3_jela_foto_rucak_juha_01.png"
+                    alt="Juha1"
+                    class="meal-image"
+                  >
+
+                  <button class="recipe-btn" onclick="openModal('modal1')">
+                    Pogledaj recept
+                  </button>
+                </div>
+
+                <div class="meal-card" data-modal="modal2">
+                  <h3>Teleće meso i aromatična palenta</h3>
+
+                  <p>
+                    Mekano meso i lagana palenta bogata energijom.
+                  </p>
+
+                  <button class="recipe-btn" onclick="openModal('modal2')">
+                    Pogledaj recept
+                  </button>
+                </div>
+
+                <div class="meal-card" data-modal="modal3">
+                  <h3>Juneće meso s rižom i mrkvom</h3>
+
+                  <p>
+                    Kašasti obrok za osobe s otežanim gutanjem.
+                  </p>
+
+                  <button class="recipe-btn" onclick="openModal('modal3')">
+                    Pogledaj recept
+                  </button>
+                </div>
+
+                <div class="meal-card" data-modal="modal4">
+                  <h3>Piletina s krumpirom i brokulom</h3>
+
+                  <p>
+                    Pasirano jelo koje se lako probavlja.
+                  </p>
+
+                  <button class="recipe-btn" onclick="openModal('modal4')">
+                    Pogledaj recept
+                  </button>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- PRILOG -->
+
+          <div class="sub-accordion">
+
+            <div class="sub-header">
+              🍚 Prilog
+            </div>
+
+            <div class="sub-content">
+
+              <div class="meal-grid">
+
+                <!-- npr. riža, palenta itd. -->
+
+                
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- GLAVNO JELO -->
+
+          <div class="sub-accordion">
+
+            <div class="sub-header">
+              🍗 Glavno jelo
+            </div>
+
+            <div class="sub-content">
+
+              <div class="meal-grid">
+
+                <!-- postojeće kartice -->
+           
+                
+                <div class="meal-card" data-modal="modal1">
+                  <h3>Piletina u mediteranskom umaku</h3>
+
+                  <p>
+                    Lagano i hranjivo jelo s rižom i povrćem.
+                  </p>
+
+                  <button class="recipe-btn" onclick="openModal('modal1')">
+                    Pogledaj recept
+                  </button>
+                </div>
+
+                <div class="meal-card" data-modal="modal2">
+                  <h3>Teleće meso i aromatična palenta</h3>
+
+                  <p>
+                    Mekano meso i lagana palenta bogata energijom.
+                  </p>
+
+                  <button class="recipe-btn" onclick="openModal('modal2')">
+                    Pogledaj recept
+                  </button>
+                </div>
+
+                <div class="meal-card" data-modal="modal3">
+                  <h3>Juneće meso s rižom i mrkvom</h3>
+
+                  <p>
+                    Kašasti obrok za osobe s otežanim gutanjem.
+                  </p>
+
+                  <button class="recipe-btn" onclick="openModal('modal3')">
+                    Pogledaj recept
+                  </button>
+                </div>
+
+                <div class="meal-card" data-modal="modal4">
+                  <h3>Piletina s krumpirom i brokulom</h3>
+
+                  <p>
+                    Pasirano jelo koje se lako probavlja.
+                  </p>
+
+                  <button class="recipe-btn" onclick="openModal('modal4')">
+                    Pogledaj recept
+                  </button>
+                </div>
+
+
+
+
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        </section>
+
+
+    <!-- VEČERA -->
+   
+
+        <section class="section">
+
+          <button class="accordion-header">
+            🌙 Večera
+          </button>
+
+          <div class="accordion-content">
+
+            <div class="meal-grid">
+
+              <div class="meal-card" data-modal="modal5">
+                <h3>Bijela riba na mediteranski</h3>
+
+                <p>
+                  Lagana večera bogata proteinima i omega-3 masnim kiselinama.
+                </p>
+
+                <button class="recipe-btn" onclick="openModal('modal5')">
+                  Pogledaj recept
+                </button>
+              </div>
+
+              <div class="meal-card" data-modal="modal6">
+                <h3>Tjestenina sa šampinjonima i kozicama</h3>
+
+                <p>
+                  Lako probavljiva tjestenina s laganim izvorom proteina.
+                </p>
+
+                <button class="recipe-btn" onclick="openModal('modal6')">
+                  Pogledaj recept
+                </button>
+              </div>
+
+              <div class="meal-card" data-modal="modal7">
+                <h3>Omlet s tikvicama i paprikom</h3>
+
+                <p>
+                  Jednostavna večera bogata bjelančevinama.
+                </p>
+
+                <button class="recipe-btn" onclick="openModal('modal7')">
+                  Pogledaj recept
+                </button>
+              </div>
+
+              <div class="meal-card" data-modal="modal8">
+                <h3>Toast sa šunkom i sirom</h3>
+
+                <p>
+                  Brz i jednostavan obrok kod manjka apetita.
+                </p>
+
+                <button class="recipe-btn" onclick="openModal('modal8')">
+                  Pogledaj recept
+                </button>
+              </div>
+              
+            </div>
+
+          </div>
+
+        </section>
+
+
+
+    <a href="../index.html" class="back-btn">
+      ← Povratak na naslovnicu
+    </a>
+
+  </main>
+
+  <!-- POPUPI -->
+
+  <!-- MODAL 1 -->
+
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+
+      <span class="close" onclick="closeModal('modal1')">&times;</span>
+
+      <h2>🍗 Piletina u mediteranskom umaku</h2>
+
+      <h4>Sastojci:</h4>
+
+      <ul>
+        <li>150 g pilećih prsa</li>
+        <li>1 čajna žličica maslinovog ulja</li>
+        <li>½ crvenog luka</li>
+        <li>1 režanj češnjaka</li>
+        <li>Mediteranski začini</li>
+        <li>40 g riže</li>
+        <li>Mrkva</li>
+      </ul>
+
+      <h4>Priprema:</h4>
+
+      <ol>
+        <li>Marinirajte meso začinima i maslinovim uljem.</li>
+        <li>Pirjajte luk i dodajte pileća prsa.</li>
+        <li>Poslužite s kuhanom rižom i mrkvom.</li>
+      </ol>
+
+    </div>
+  </div>
+
+  <!-- MODAL 2 -->
+
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+
+      <span class="close" onclick="closeModal('modal2')">&times;</span>
+
+      <h2>🥩 Teleće meso i aromatična palenta</h2>
+
+      <h4>Sastojci:</h4>
+
+      <ul>
+        <li>90 g teletine</li>
+        <li>Mrkva</li>
+        <li>Palenta</li>
+        <li>Maslinovo ulje</li>
+        <li>Bosiljak i ružmarin</li>
+      </ul>
+
+      <h4>Priprema:</h4>
+
+      <ol>
+        <li>Pirjajte mrkvu i luk.</li>
+        <li>Dodajte teletinu i kuhajte dok ne omekša.</li>
+        <li>Skuhajte palentu i začinite začinskim biljem.</li>
+      </ol>
+
+    </div>
+  </div>
+
+  <!-- MODAL 3 -->
+
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+
+      <span class="close" onclick="closeModal('modal3')">&times;</span>
+
+      <h2>🥣 Juneće meso s rižom i mrkvom</h2>
+
+      <h4>Sastojci:</h4>
+
+      <ul>
+        <li>90 g junećeg mesa</li>
+        <li>60 g riže</li>
+        <li>Mrkva</li>
+        <li>Povrće za juhu</li>
+      </ul>
+
+      <h4>Priprema:</h4>
+
+      <ol>
+        <li>Skuhajte junetinu i rižu.</li>
+        <li>Usitnite sastojke štapnim mikserom.</li>
+        <li>Po potrebi dodajte juhu za mekšu teksturu.</li>
+      </ol>
+
+    </div>
+  </div>
+
+  <!-- MODAL 4 -->
+
+  <div id="modal4" class="modal">
+    <div class="modal-content">
+
+      <span class="close" onclick="closeModal('modal4')">&times;</span>
+
+      <h2>🥔 Piletina s krumpirom i brokulom</h2>
+
+      <h4>Sastojci:</h4>
+
+      <ul>
+        <li>Pileće meso</li>
+        <li>Krumpir</li>
+        <li>Brokula</li>
+        <li>Maslinovo ulje</li>
+      </ul>
+
+      <h4>Priprema:</h4>
+
+      <ol>
+        <li>Skuhajte piletinu i povrće.</li>
+        <li>Usitnite blenderom do kašaste teksture.</li>
+        <li>Dodajte juhu po potrebi.</li>
+      </ol>
+
+    </div>
+  </div>
+
+  <!-- MODAL 5 -->
+
+  <div id="modal5" class="modal">
+    <div class="modal-content">
+
+      <span class="close" onclick="closeModal('modal5')">&times;</span>
+
+      <h2>🐟 Bijela riba na mediteranski</h2>
+
+      <h4>Sastojci:</h4>
+
+      <ul>
+        <li>200 g bijele ribe</li>
+        <li>Maslinovo ulje</li>
+        <li>Peršin</li>
+        <li>Limun</li>
+      </ul>
+
+      <h4>Priprema:</h4>
+
+      <ol>
+        <li>Začinite ribu maslinovim uljem i peršinom.</li>
+        <li>Pecite 15-20 minuta.</li>
+        <li>Poslužite sa zelenom salatom.</li>
+      </ol>
+
+    </div>
+  </div>
+
+  <!-- MODAL 6 -->
+
+  <div id="modal6" class="modal">
+    <div class="modal-content">
+
+      <span class="close" onclick="closeModal('modal6')">&times;</span>
+
+      <h2>🍝 Tjestenina sa šampinjonima i kozicama</h2>
+
+      <h4>Sastojci:</h4>
+
+      <ul>
+        <li>Tjestenina</li>
+        <li>Šampinjoni</li>
+        <li>Kozice</li>
+        <li>Maslinovo ulje</li>
+      </ul>
+
+      <h4>Priprema:</h4>
+
+      <ol>
+        <li>Skuhajte tjesteninu.</li>
+        <li>Pirjajte šampinjone i kozice.</li>
+        <li>Sve pomiješajte i pospite peršinom.</li>
+      </ol>
+
+    </div>
+  </div>
+
+  <!-- MODAL 7 -->
+
+  <div id="modal7" class="modal">
+    <div class="modal-content">
+
+      <span class="close" onclick="closeModal('modal7')">&times;</span>
+
+      <h2>🥚 Omlet s tikvicama i paprikom</h2>
+
+      <h4>Sastojci:</h4>
+
+      <ul>
+        <li>2 jaja</li>
+        <li>Tikvice</li>
+        <li>Crvena paprika</li>
+        <li>Tvrdi sir</li>
+      </ul>
+
+      <h4>Priprema:</h4>
+
+      <ol>
+        <li>Pirjajte povrće.</li>
+        <li>Dodajte razmućena jaja i sir.</li>
+        <li>Pecite dok omlet ne bude gotov.</li>
+      </ol>
+
+    </div>
+  </div>
+
+  <!-- MODAL 8 -->
+
+  <div id="modal8" class="modal">
+    <div class="modal-content">
+
+      <span class="close" onclick="closeModal('modal8')">&times;</span>
+
+      <h2>🥪 Toast sa šunkom i sirom</h2>
+
+      <h4>Sastojci:</h4>
+
+      <ul>
+        <li>2 kriške toasta</li>
+        <li>Pureća šunka</li>
+        <li>Sir</li>
+        <li>Maslac</li>
+      </ul>
+
+      <h4>Priprema:</h4>
+
+      <ol>
+        <li>Složite toast sa šunkom i sirom.</li>
+        <li>Ispecite u tosteru ili tavi.</li>
+        <li>Poslužite toplo.</li>
+      </ol>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <p>
+      © 2026 Prehrana tijekom kemoterapije
+    </p>
+  </footer>
+
+  <!-- SCRIPT -->
+
+  <script>
+
+    function openModal(id){
+      document.getElementById(id).style.display = "block";
+    }
+
+    function closeModal(id){
+      document.getElementById(id).style.display = "none";
+    }
+
+    window.onclick = function(event){
+
+      const modals = document.querySelectorAll('.modal');
+
+      modals.forEach(function(modal){
+
+        if(event.target == modal){
+          modal.style.display = "none";
+        }
+
+      });
+    }
+
+
+
+    const accordions = document.querySelectorAll(".accordion-header");
+
+    accordions.forEach(button => {
+
+      button.addEventListener("click", function(){
+
+        const content = this.nextElementSibling;
+        const isOpen = this.classList.contains("active");
+
+        accordions.forEach(item => {
+
+          item.classList.remove("active");
+
+          const c = item.nextElementSibling;
+          c.style.maxHeight = null;
+          c.classList.remove("open");
+
+        });
+
+        if(!isOpen){
+
+          this.classList.add("active");
+          content.classList.add("open");
+
+          // nakon što browser iscrta sadržaj
+          requestAnimationFrame(() => {
+            content.style.maxHeight =
+              content.scrollHeight + 5000 + "px";
+          });
+
+        }
+
+      });
+
+    });
+
+
+
+
+    /*search*/
+
+    const searchInput = document.getElementById('ingredientSearch');
+
+    searchInput.addEventListener('input', function () {
+
+      const query = this.value.toLowerCase().trim();
+
+      document.querySelectorAll('.section').forEach(section => {
+
+        const recipeCards = section.querySelectorAll('.meal-card[data-modal]');
+
+        /* Ako sekcija nema recepte (Doručak, Marenda) */
+        if (recipeCards.length === 0) {
+
+          if (query !== '') {
+            section.style.display = 'none';
+          } else {
+            section.style.display = '';
+          }
+
+          return;
+        }
+
+        let visibleCards = 0;
+
+        recipeCards.forEach(card => {
+
+          const modalId = card.dataset.modal;
+          const modal = document.getElementById(modalId);
+
+          const ingredients = modal.querySelector('ul')
+            .innerText
+            .toLowerCase();
+
+          if (query === '' || ingredients.includes(query)) {
+
+            card.style.display = '';
+            visibleCards++;
+
+          } else {
+
+            card.style.display = 'none';
+
+          }
+
+        });
+
+        section.style.display = visibleCards > 0 ? '' : 'none';
+
+      });
+
+    });
+
+
+    const subAccordions =
+    document.querySelectorAll('.sub-header');
+
+    subAccordions.forEach(header => {
+
+      header.addEventListener('click', () => {
+
+        const opened =
+          header.classList.contains('active');
+
+        document
+          .querySelectorAll('.sub-header')
+          .forEach(h => h.classList.remove('active'));
+
+        document
+          .querySelectorAll('.sub-content')
+          .forEach(c => c.classList.remove('open'));
+
+        if(!opened){
+          header.classList.add('active');
+          header.nextElementSibling
+                .classList.add('open');
+        }
+
+      });
+
+    });
+
+
+
+
+
+
+
+  </script>
+
+</body>
+</html>
+
+

@@ -142,17 +142,21 @@
       margin-bottom:20px;
       overflow:hidden;
       box-shadow:0 4px 15px rgba(0,0,0,0.08);
+      border-left:6px solid #1f5d57;
+      transition:0.25s;
     }
 
     .accordion-btn{
       width:100%;
       background:#ffffff;
       color:#1f5d57;
-      padding:24px;
+
+      padding:24px 24px 24px 18px;
+
       border:none;
       outline:none;
       text-align:left;
-      font-size:1.1rem;
+      font-size:1.2rem;
       font-weight:bold;
       cursor:pointer;
       transition:0.3s;
@@ -163,8 +167,9 @@
       gap:20px;
     }
 
-    .accordion-btn:hover{
-      background:#f0f5f4;
+    .accordion:hover{
+      border-left-color:#2b7b72;
+      box-shadow:0 8px 20px rgba(0,0,0,0.12);
     }
 
     /* DESNI TEKST */
@@ -380,7 +385,7 @@
           Jedite male obroke svaka 2-3 sata
           </span>
           <span class="more-text">
-            klik za više
+            prikaži više
           </span>
 
         </button>
@@ -421,7 +426,7 @@
           </span>
 
           <span class="more-text">
-            klik za više
+            prikaži više
           </span>
 
         </button>
@@ -462,7 +467,7 @@
           </span>
 
           <span class="more-text">
-            klik za više
+            prikaži više
           </span>
 
         </button>
@@ -493,7 +498,7 @@
           </span>
 
           <span class="more-text">
-            klik za više
+            prikaži više
           </span>
 
         </button>
@@ -529,7 +534,7 @@
           </span>
 
           <span class="more-text">
-            klik za više
+            prikaži više
           </span>
 
         </button>
@@ -560,7 +565,7 @@
           </span>
 
           <span class="more-text">
-            klik za više
+            prikaži više
           </span>
 
         </button>
@@ -593,7 +598,7 @@
           </span>
 
           <span class="more-text">
-            klik za više
+            prikaži više
           </span>
 
         </button>
@@ -628,7 +633,7 @@
           </span>
 
           <span class="more-text">
-            klik za više
+            prikaži više
           </span>
 
         </button>
@@ -666,7 +671,7 @@
           </span>
 
           <span class="more-text">
-            klik za više
+            prikaži više
           </span>
 
         </button>
@@ -704,7 +709,7 @@
           </span>
 
           <span class="more-text">
-            klik za više
+            prikaži više
           </span>
 
         </button>
@@ -735,7 +740,7 @@
           </span>
 
           <span class="more-text">
-            klik za više
+            prikaži više
           </span>
 
         </button>
@@ -770,7 +775,7 @@
           </span>
 
           <span class="more-text">
-            klik za više
+            prikaži više
           </span>
 
         </button>
@@ -808,7 +813,7 @@
           </span>
 
           <span class="more-text">
-            klik za više
+            prikaži više
           </span>
 
         </button>
@@ -835,7 +840,7 @@
           </span>
 
           <span class="more-text">
-            klik za više
+            prikaži više
           </span>
 
         </button>
@@ -868,7 +873,7 @@
           </span>
 
           <span class="more-text">
-            klik za više
+            prikaži više
           </span>
 
         </button>
@@ -902,7 +907,7 @@
           </span>
 
           <span class="more-text">
-            klik za više
+            prikaži više
           </span>
 
         </button>
@@ -939,7 +944,7 @@
           </span>
 
           <span class="more-text">
-            klik za više
+            prikaži više
           </span>
 
         </button>
@@ -980,7 +985,37 @@
 
 <script>
 
-  /* ACCORDION */
+  /* ACCORDION -sve ostaju otvorene*/
+  /*
+  const accordions = document.querySelectorAll(".accordion-btn");
+
+  accordions.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const content = button.nextElementSibling;
+      const label = button.querySelector(".more-text");
+
+      if(content.style.maxHeight){
+
+        content.style.maxHeight = null;
+        label.textContent = "prikaži više";
+
+      } else {
+
+        content.style.maxHeight = content.scrollHeight + "px";
+        label.textContent = "sakrij";
+
+      }
+
+    });
+
+  });
+  */
+
+  
+  /* ACCORDION - otvorena samo jedna, prošla se zatvara*/
+
 
   const accordions = document.querySelectorAll(".accordion-btn");
 
@@ -989,16 +1024,27 @@
     button.addEventListener("click", () => {
 
       const content = button.nextElementSibling;
+      const isOpen = content.style.maxHeight;
 
-      if(content.style.maxHeight){
-        content.style.maxHeight = null;
-      } else {
+      document.querySelectorAll(".accordion-content").forEach(c => {
+        c.style.maxHeight = null;
+      });
+
+      document.querySelectorAll(".more-text").forEach(t => {
+        t.textContent = "prikaži više";
+      });
+
+      if(!isOpen){
         content.style.maxHeight = content.scrollHeight + "px";
+        button.querySelector(".more-text").textContent = "sakrij";
       }
 
     });
 
   });
+
+
+
 
   /* FILTER SIMPTOMA */
 

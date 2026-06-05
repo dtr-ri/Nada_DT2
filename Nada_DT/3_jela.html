@@ -262,9 +262,7 @@
     }
 
 
-
-
-
+    
     /* HARMONIKA */
 
     .accordion-header{
@@ -274,7 +272,7 @@
       border-left:6px solid #1f5d57;
       padding:18px 20px;
       text-align:left;
-      font-size:2rem;
+      font-size:1.5rem;
       font-weight:bold;
       color:#1f5d57;
       cursor:pointer;
@@ -363,12 +361,7 @@
     }
     
 
-
-
     /* search */
-
-
-
 
     .search-container{
       margin-bottom:40px;
@@ -386,6 +379,49 @@
     #ingredientSearch:focus{
       border-color:#1f5d57;
     }
+
+       /* search X*/
+
+    .search-box{
+      position: relative;
+      width: 100%;
+    }
+
+    #ingredientSearch{
+      width: 100%;
+      padding: 15px 45px 15px 20px; /* prostor za X */
+      font-size: 1rem;
+      border: 2px solid #d8d8d8;
+      border-radius: 12px;
+      outline: none;
+    }
+
+    #ingredientSearch:focus{
+      border-color: #1f5d57;
+    }
+
+    /* X gumb */
+    #clearSearch{
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: transparent;
+      font-size: 18px;
+      cursor: pointer;
+      color: #888;
+      display: none; /* default skriven */
+    }
+
+    #clearSearch:hover{
+      color: #000;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
 
     footer{
       background:#1f5d57;
@@ -443,15 +479,17 @@
     <!-- pretraga -->
 
     <div class="search-container">
-
-      <input
-        type="text"
-        id="ingredientSearch"
-        placeholder="🔍 Pretraži recepte za ručak i večeru po namirnici (npr. riža, piletina, brokula...)"
-      >
-
+      <div class="search-box">
+        <input
+          type="text"
+          id="ingredientSearch"
+          placeholder="🔍 Pretraži recepte za ručak i večeru po namirnici (npr. riža, piletina, brokula...)"
+        >
+        <button type="button" id="clearSearch" aria-label="Očisti pretragu">
+          ✕
+        </button>
+      </div>
     </div>
-
 
 
     <!-- DORUČAK -->
@@ -1464,6 +1502,10 @@
           requestAnimationFrame(() => {
             content.style.maxHeight =
               content.scrollHeight + 5000 + "px";
+
+            // pozicioniraj naslov harmonike na vrh prozora
+            const headerTop = this.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({ top: headerTop, behavior: 'smooth' });
           });
 
         }
@@ -1478,57 +1520,102 @@
     /*search*/
 
     const searchInput = document.getElementById('ingredientSearch');
+    const clearBtn = document.getElementById('clearSearch');
 
+    /* helper - dohvati tekst za pretragu za karticu */
+    function getCardText(card) {
+      // Ako kartica ima data-modal, pretraži sastojke u modalu
+      if (card.dataset.modal) {
+        const modal = document.getElementById(card.dataset.modal);
+        if (modal) {
+          const ul = modal.querySelector('ul');
+          return ul ? ul.innerText.toLowerCase() : '';
+        }
+      }
+      // Inače pretraži vidljivi tekst kartice (naziv + opis)
+      return card.innerText.toLowerCase();
+    }
+
+    /* glavna funkcija filtera */
+    function applyFilter(query) {
+
+      document.querySelectorAll('.section').forEach(section => {
+
+        // Kartice koje su IZRAVNO u sekciji (ne unutar sub-harmonika) - doručak, marenda
+        const directCards = Array.from(section.querySelectorAll('.meal-card')).filter(card => {
+          return !card.closest('.sub-accordion');
+        });
+
+        let sectionHasVisibleCards = false;
+
+        // 1. filtriranje izravnih kartica (doručak, marenda - nemaju sub-harmonike)
+        directCards.forEach(card => {
+          const text = getCardText(card);
+          const match = query === '' || text.includes(query);
+          card.classList.toggle('hidden', !match);
+          if (match) sectionHasVisibleCards = true;
+        });
+
+        // 2. SUB-HARMONICI (juha, prilog, glavno jelo u ručku)
+        let sectionHasVisibleSubs = false;
+
+        section.querySelectorAll('.sub-accordion').forEach(subAccordion => {
+          const subContent = subAccordion.querySelector('.sub-content');
+          const subCards = subAccordion.querySelectorAll('.meal-card');
+
+          let subHasVisible = false;
+
+          subCards.forEach(card => {
+            const text = getCardText(card);
+            const match = query === '' || text.includes(query);
+            card.classList.toggle('hidden', !match);
+            if (match) subHasVisible = true;
+          });
+
+          // Sakrij/prikaži sub-harmoniku ovisno o rezultatima
+          subAccordion.classList.toggle('hidden', query !== '' && !subHasVisible);
+
+          if (subHasVisible) sectionHasVisibleSubs = true;
+        });
+
+        // 3. Sakrij/prikaži cijelu sekciju
+        const hasSubs = section.querySelectorAll('.sub-accordion').length > 0;
+
+        if (hasSubs) {
+          // Sekcija s podharmonikama (ručak) - vidljiva ako ima vidljivih podharmonika
+          section.classList.toggle('hidden', query !== '' && !sectionHasVisibleSubs);
+        } else if (directCards.length === 0) {
+          // Sekcija bez kartica - uvijek sakrij pri pretrazi
+          section.classList.toggle('hidden', query !== '');
+        } else {
+          // Obična sekcija (doručak, marenda)
+          section.classList.toggle('hidden', !sectionHasVisibleCards);
+        }
+
+      });
+    }
+
+    /* input event (samo jedan!) */
     searchInput.addEventListener('input', function () {
 
       const query = this.value.toLowerCase().trim();
 
-      document.querySelectorAll('.section').forEach(section => {
+      applyFilter(query);
 
-        const recipeCards = section.querySelectorAll('.meal-card[data-modal]');
-
-        /* Ako sekcija nema recepte (Doručak, Marenda) */
-        if (recipeCards.length === 0) {
-
-          if (query !== '') {
-            section.style.display = 'none';
-          } else {
-            section.style.display = '';
-          }
-
-          return;
-        }
-
-        let visibleCards = 0;
-
-        recipeCards.forEach(card => {
-
-          const modalId = card.dataset.modal;
-          const modal = document.getElementById(modalId);
-
-          const ingredients = modal.querySelector('ul')
-            .innerText
-            .toLowerCase();
-
-          if (query === '' || ingredients.includes(query)) {
-
-            card.style.display = '';
-            visibleCards++;
-
-          } else {
-
-            card.style.display = 'none';
-
-          }
-
-        });
-
-        section.style.display = visibleCards > 0 ? '' : 'none';
-
-      });
-
+      clearBtn.style.display = query.length ? 'block' : 'none';
     });
 
+    /* clear X */
+    clearBtn.addEventListener('click', function () {
+
+      searchInput.value = '';
+      clearBtn.style.display = 'none';
+
+      applyFilter('');
+    });
+
+
+    
 
     const subAccordions =
     document.querySelectorAll('.sub-header');

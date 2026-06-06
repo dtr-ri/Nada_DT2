@@ -82,10 +82,11 @@
       overflow:hidden;
       box-shadow:0 6px 20px rgba(0,0,0,0.08);
       transition:0.3s ease;
+      cursor:pointer;
     }
 
     .card:hover{
-      transform:translateY(-5px);
+      transform:translateY(-5px) scale(1.02);
       box-shadow:0 10px 25px rgba(0,0,0,0.15);
     }
 
@@ -121,6 +122,20 @@
 
     .btn:hover{
       background:#164742;
+    }
+
+    .card-link{
+      text-decoration:none;
+      color:inherit;
+      display:block;
+    }
+
+    .card-link:hover{
+      text-decoration:none;
+    }
+
+    .card-link .card{
+      height:100%;
     }
 
     /* FOOTER */
@@ -174,46 +189,61 @@
     <div class="cards">
 
       <!-- 1 -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=1200&auto=format&fit=crop" alt="Preporuke prehrane">
+      <a href="Nada_DT/1_preporuke.html" class="card-link">
 
-        <div class="card-content">
-          <h3>Preporuke za prehranu tijekom kemoterapije</h3>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=1200&auto=format&fit=crop" alt="Preporuke prehrane">
 
-          <a href="Nada_DT/1_preporuke.html" class="btn">
-            Otvori
-          </a>
+          <div class="card-content">
+            <h3>Preporuke za prehranu tijekom kemoterapije</h3>
+
+            <span class="btn">
+              Otvori
+            </span>
+          </div>
+
         </div>
-      </div>
+
+      </a>
 
       <!-- 2 -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1200&auto=format&fit=crop" alt="Namirnice">
+      <a href="Nada_DT/2_namirnice.html" class="card-link">
 
-        <div class="card-content">
-          <h3>
-            Preporučene namirnice i namirnice koje treba izbjegavati
-          </h3>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1200&auto=format&fit=crop" alt="Namirnice">
 
-          <a href="Nada_DT/2_namirnice.html" class="btn">
-            Otvori
-          </a>
+          <div class="card-content">
+            <h3>
+              Preporučene namirnice i namirnice koje treba izbjegavati
+            </h3>
+
+            <span class="btn">
+              Otvori
+            </span>
+          </div>
+
         </div>
-      </div>
+
+      </a>
 
       <!-- 3 -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=1200&auto=format&fit=crop" alt="Jela i recepti">
+      <a href="Nada_DT/3_jela.html" class="card-link">
 
-        <div class="card-content">
-          <h3>Prijedlozi jela i recepti</h3>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=1200&auto=format&fit=crop" alt="Jela i recepti">
 
-          <a href="Nada_DT/3_jela.html" class="btn">
-            Otvori
-          </a>
+          <div class="card-content">
+            <h3>Prijedlozi jela i recepti</h3>
+
+
+            <span class="btn">
+              Otvori
+            </span>
+          </div>
+
         </div>
-      </div>
 
+      </a>
     </div>
 
   </main>

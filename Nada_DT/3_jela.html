@@ -110,6 +110,7 @@
       display:grid;
       grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
       gap:25px;
+      align-items:stretch;
     }
 
     .meal-card{
@@ -132,10 +133,16 @@
       margin-bottom:15px;
       font-size:1.2rem;
       text-align:center;
+      min-height:3.6rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
 
     .meal-card p{
       margin-bottom:15px;
+      flex-grow:1;
+      min-height:3rem;
     }
 
     .meal-image{
@@ -262,7 +269,9 @@
     }
 
 
-    
+
+
+
     /* HARMONIKA */
 
     .accordion-header{
